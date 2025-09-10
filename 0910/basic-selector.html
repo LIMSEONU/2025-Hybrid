@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>basic-selector</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Noto Sans KR', sans-serif; line-height: 1.4; }
+
+    .box-1 {
+      border: 3px dashed #d33;
+      padding: 12px 14px;
+      margin: 18px 0;
+    }
+
+    .p-style1 { color: #000; }
+    .span-style1, .span-style2 { color: #0a7c2f; }
+    .span-style3 { color: #000; }
+
+    .sky-sea li{
+      background: #ffef6b;
+      border: 2px solid #0003c5;
+      padding: 2px 6px;
+      margin: 6px 0;
+    }
+
+    .explain {
+      margin: 18px 0 8px;
+      color: #000000;
+    }
+
+    .span-style4, .span-style5, .span-style6 {
+      color: #9b2782;
+      font-weight: 600;
+    }
+
+    .box-2 {
+      border: 3px dotted #1c58ff;
+      padding: 14px;
+      margin-top: 12px;
+    }
+
+    .tree-list{
+      margin: 0;
+      padding-left: 22px;
+      list-style: none;
+    }
+    .tree-list li{
+      margin: 8px 0;
+    }
+
+    .jeon { color: #ffd54a; }
+    .so { color: #e53935; }
+
+    .gae span{
+      display: block;
+      background: #9d9d9d;
+      color: #ff9800;
+      border: 3px solid #ff9800;
+      text-align: center;
+      padding: 6px 10px;
+      border-radius: 4px;
+    }
+
+    .bam { color: #7e57c2; }
+
+    .jin span{
+      display: block;
+      background: #9d9d9d;
+      color: #ff9800;
+      border: 3px solid #ff9800;
+      padding: 6px 10px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box-1">
+    div스타일1
+    <span class="span-style1">span스타일1</span>
+    <span class="span-style2">span스타일2</span>
+
+    <p class="p-style1">
+      p스타일1 <span class="span-style3">span스타일3</span>
+    </p>
+
+    <ul class="sky-sea">
+      <li>하늘</li>
+      <li>바다</li>
+    </ul>
+  </div>
+
+  <div class="explain">
+    div스타일2 <span class="span-style4">span스타일4</span>
+    <span class="span-style5">span스타일5</span><br>
+    p스타일2 <span class="span-style6">span스타일6</span>
+  </div>
+
+  <div class="box-2">
+    <ul class="tree-list">
+      <li class="jeon">전나무</li>
+      <li class="so">소나무</li>
+      <li class="gae"><span>개나리</span></li>
+      <li class="bam">밤나무</li>
+      <li class="jin"><span>진달래</span></li>
+    </ul>
+  </div>
+
+</body>
+</html>
