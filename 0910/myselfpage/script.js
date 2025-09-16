@@ -159,4 +159,31 @@ function addButtonLoadingStates() {
 // Initialize all features
 document.addEventListener('DOMContentLoaded', function() {
     addButtonLoadingStates();
+    // Bind contact form submit if present
+    var contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', handleContactSubmit);
+    }
 });
+
+// Contact form interaction
+function handleContactSubmit(e) {
+    e.preventDefault();
+    var form = e.target;
+    var name = form.name ? form.name.value.trim() : '';
+    var email = form.email ? form.email.value.trim() : '';
+    var message = form.message ? form.message.value.trim() : '';
+
+    if (!name || !email || !message) {
+        alert('모든 항목을 입력해 주세요.');
+        return;
+    }
+
+    var toast = document.getElementById('contact-toast');
+    if (toast) {
+        toast.style.display = 'block';
+        setTimeout(function(){ toast.style.display = 'none'; }, 2500);
+    }
+
+    form.reset();
+}
