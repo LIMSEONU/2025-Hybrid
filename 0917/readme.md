@@ -12,7 +12,7 @@
 - `logo.jpg`: 동의과학대학교 이미지
 - `stu.jpg`: 얼굴 이미지
 - ~~video.mp4 (사용 불가: 용량 초과)~~
-➡ 유튜브 링크 사용: https://youtu.be/nzDDOE8qWG0
+ ➡ 유튜브 링크 사용: https://youtu.be/nzDDOE8qWG0
 
 ## 기술 스택
 
