@@ -1,0 +1,82 @@
+li { list-style:none; }
+.picture { list-style:none; padding:0; margin:0; }
+.picture li { float:left; width:50%;}
+.picture li a {display:block; margin:5px; border: 1px }
+.picture li img { display:block; width:50%;  height:auto;}
+.picture li img:hover { display:block; width:100%;  height:auto;} 
+
+/* 동의과학대학교 로고 스타일 */
+.school-logo {
+    width: 200px;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+}
+
+/* 동의과학대학교 테마 색상 - 부드러운 검정과 빨강 */
+.ui-page-theme-b,
+.ui-bar-b,
+.ui-body-b,
+.ui-page-theme-b .ui-bar-inherit,
+.ui-body-b .ui-bar-inherit {
+    background-color: #2A2A2A !important; /* 부드러운 검정 배경 */
+    color: #f5f5f5;
+    border-color: #FF6B6B !important; /* 부드러운 빨간색 강조 */
+}
+
+.ui-page-theme-b .ui-btn,
+html .ui-bar-b .ui-btn,
+html .ui-body-b .ui-btn {
+    background-color: #FF6B6B !important; /* 부드러운 빨간색 버튼 */
+    color: white;
+    text-shadow: none;
+}
+
+.ui-page-theme-b .ui-btn:hover {
+    background-color: #FF8E8E !important; /* 더 부드러운 빨간색 (호버 효과) */
+}
+
+.ui-bar.ui-bar-a {
+    background-color: #FF6B6B !important; /* 부드러운 빨간색 바 */
+    color: white;
+    text-shadow: none;
+}
+
+/* 링크 색상 */
+.ui-page-theme-b a,
+html .ui-bar-b a,
+html .ui-body-b a {
+    font-weight: bold;
+}
+
+/* 콜랩시블 메뉴 스타일 */
+.ui-collapsible-heading-toggle {
+    background-color: #333333 !important; /* 진한 회색 */
+    border-color: #E60012 !important;
+}
+
+/* Footer 스타일 */
+.custom-footer {
+    text-align: center;
+    padding: 10px;
+    line-height: 1.4;
+}
+
+.footer-address {
+    font-size: 0.9em;
+    margin: 5px 0;
+    color: #f5f5f5;
+}
+
+.footer-contact {
+    font-size: 0.85em;
+    margin: 5px 0;
+    color: #f5f5f5;
+}
+
+.footer-logo {
+    width: 60px;
+    height: auto;
+    margin: 5px auto;
+    display: block;
+}
