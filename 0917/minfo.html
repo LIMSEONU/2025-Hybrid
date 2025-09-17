@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>임선우의 포트폴리오 - 인적사항</title>
+    <link rel="stylesheet" href="mportpolio.css"/>
+</head>
+<body>
+    <header>
+        <h1>포트폴리오</h1>
+        <h2>임선우</h2>
+    </header>
+    <nav>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="nav-menu">
+            <span><a href="mintro.html">소개</a></span>
+            <span><a href="minfo.html">인적</a></span>
+            <span><a href="mstudy.html">학술</a></span>
+            <span><a href="mcareer.html">경력</a></span>
+        </div>
+    </nav>
+    <div class="content">
+        <section class="section1">  
+            <h3>기본 정보</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="info-icon">👤</i>
+                    <span class="info-label">이름</span>
+                    <span class="info-value">임선우</span>
+                </div>
+                <div class="info-item">
+                    <i class="info-icon">📧</i>
+                    <span class="info-label">이메일</span>
+                    <span class="info-value">tjsdn4037@naver.com</span>
+                </div>
+                <div class="info-item">
+                    <i class="info-icon">📱</i>
+                    <span class="info-label">연락처</span>
+                    <span class="info-value">010-1234-5678</span>
+                </div>
+                <div class="info-item">
+                    <i class="info-icon">🌐</i>
+                    <span class="info-label">GitHub</span>
+                    <span class="info-value">github.com/LIMSEONU</span>
+                </div>
+            </div>
+
+            <h3>학력 사항</h3>
+            <div class="education-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>동의과학대학교</h4>
+                        <p class="timeline-period">2021.03 - 2026.02 (예정)</p>
+                        <ul class="timeline-details">
+                            <li>컴퓨터 소프트웨어과 재학중</li>
+                            <li>학과 프로젝트 진행중</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>동의고등학교</h4>
+                        <p class="timeline-period">2018.03 - 2021.02</p>
+                        <ul class="timeline-details">
+                            <li>기계과 전공</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>동양중학교</h4>
+                        <p class="timeline-period">2015.03 - 2018.02</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>동양초등학교</h4>
+                        <p class="timeline-period">2009.03 - 2015.02</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <img id="logo" src="logo.jpg" alt="로고"/>	
+        <aside>
+            <h3>추가 정보</h3>
+            <div class="additional-info">
+                <div class="info-card">
+                    <h4>관심 분야</h4>
+                    <ul class="interest-list">
+                        <li>웹 개발</li>
+                        <li>모바일 앱 개발</li>
+                        <li>클라우드 컴퓨팅</li>
+                        <li>인공지능/머신러닝</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h4>보유 기술</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Git</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <footer>
+        <h2>Copyright &copy; 2025 임선우</h2>
+    </footer>
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+        
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        });
+
+        document.querySelectorAll(".nav-menu a").forEach(n => n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        }));
+    </script>
+</body>
+</html>

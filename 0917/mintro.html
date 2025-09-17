@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">	
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>임선우의 포트폴리오</title>
+<link rel="stylesheet" type="text/css" href="mportpolio.css"/>
+</head>
+<body>
+    <header>
+        <h1>포트폴리오</h1>
+        <h2>임선우</h2>
+    </header>
+    <nav>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="nav-menu">
+            <span><a href="mintro.html">소개</a></span>
+            <span><a href="minfo.html">인적</a></span>
+            <span><a href="mstudy.html">학술</a></span>
+            <span><a href="mcareer.html">경력</a></span>
+        </div>
+    </nav>
+    <div class="content">
+        <section class="section1">  
+            <h3>About Me</h3>
+            <img id="stu-pic" src="stu.jpg"/>
+            <p>
+                안녕하세요! 저는 동의과학대학교 컴퓨터소프트웨어과에서 학업에 열중하고 있는 2학년 임선우입니다.<br> 
+                현재 졸업을 앞두고 있으며, 소프트웨어 개발에 대한 깊은 열정과 끊임없는 학습 의지를 가지고 있습니다.
+            </p>
+            <p>
+                프로그래밍과 새로운 기술에 대한 호기심이 많아 항상 최신 트렌드를 파악하고 학습하려 노력하고 있습니다.<br>
+                특히 웹 개발과 모바일 애플리케이션 개발에 관심이 많으며, 실제 프로젝트 경험을 통해 실무 능력을 키워나가고 있습니다.
+            </p><br>
+            <p>
+                "배움에는 끝이 없다"라는 모토로 지속적인 성장을 추구하며, 팀 프로젝트에서도 적극적인 소통과 협업을 통해
+                최상의 결과를 이끌어내고자 노력하고 있습니다.
+            </p>
+        </section>
+        <aside>
+            <h3>Tech Stack</h3> 
+            <div class="tech-icons">
+                <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"/>
+                <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"/>
+                <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"/>
+                <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
+            </div>
+            <h3>Links</h3>
+            <div class="social-links">
+                <a href="https://github.com" target="_blank">
+                    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+                </a>
+                <a href="https://www.linkedin.com" target="_blank">
+                    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+                </a>
+            </div>
+        </aside>
+    </div>
+    <footer>
+        <h2>Copyright &copy; 2025 임선우</h2>
+    </footer>
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+        
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        });
+
+        document.querySelectorAll(".nav-menu a").forEach(n => n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        }));
+    </script>
+</body>
+</html>
