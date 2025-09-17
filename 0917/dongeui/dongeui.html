@@ -1,0 +1,267 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>jQuery Mobile</title>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style>
+   li { list-style:none; }
+  .picture { list-style:none; padding:0; margin:0; }
+  .picture li { float:left; width:50%;}
+  .picture li a {display:block; margin:5px; border: 1px }
+  .picture li img { display:block; width:50%;  height:auto;}
+  .picture li img:hover { display:block; width:100%;  height:auto;} 
+  
+  /* 동의과학대학교 로고 스타일 */
+  .school-logo {
+      width: 200px;
+      height: auto;
+      margin: 20px auto;
+      display: block;
+  }
+  
+  /* 동의과학대학교 테마 색상 - 부드러운 검정과 빨강 */
+  .ui-page-theme-b,
+  .ui-bar-b,
+  .ui-body-b,
+  .ui-page-theme-b .ui-bar-inherit,
+  .ui-body-b .ui-bar-inherit {
+      background-color: #2A2A2A !important; /* 부드러운 검정 배경 */
+      color: #f5f5f5;
+      border-color: #FF6B6B !important; /* 부드러운 빨간색 강조 */
+  }
+  
+  .ui-page-theme-b .ui-btn,
+  html .ui-bar-b .ui-btn,
+  html .ui-body-b .ui-btn {
+      background-color: #FF6B6B !important; /* 부드러운 빨간색 버튼 */
+      color: white;
+      text-shadow: none;
+  }
+  
+  .ui-page-theme-b .ui-btn:hover {
+      background-color: #FF8E8E !important; /* 더 부드러운 빨간색 (호버 효과) */
+  }
+  
+  .ui-bar.ui-bar-a {
+      background-color: #FF6B6B !important; /* 부드러운 빨간색 바 */
+      color: white;
+      text-shadow: none;
+  }
+  
+  /* 링크 색상 */
+  .ui-page-theme-b a,
+  html .ui-bar-b a,
+  html .ui-body-b a {
+      font-weight: bold;
+  }
+  
+  /* 콜랩시블 메뉴 스타일 */
+  .ui-collapsible-heading-toggle {
+      background-color: #333333 !important; /* 진한 회색 */
+      border-color: #E60012 !important;
+  }
+  
+  /* Footer 스타일 */
+  .custom-footer {
+      text-align: center;
+      padding: 10px;
+      line-height: 1.4;
+  }
+  
+  .footer-address {
+      font-size: 0.9em;
+      margin: 5px 0;
+      color: #f5f5f5;
+  }
+  
+  .footer-contact {
+      font-size: 0.85em;
+      margin: 5px 0;
+      color: #f5f5f5;
+  }
+  
+  .footer-logo {
+      width: 60px;
+      height: auto;
+      margin: 5px auto;
+      display: block;
+  }
+</style>
+</head>
+
+<body>
+<div data-theme="b">
+	<div data-role="page" id="home">
+		<div data-role="header" data-theme="b">
+			<h1>동의과학대학교 소개 앱</h1>
+		</div>
+		<div data-role="content" style="text-align:center">
+				<img src="logo.png" class="school-logo">
+			<ul data-role="listview" data-inset="true">
+				<li><a href="#intro">학교소개</a></li>
+				<li><a href="#movie" data-rel="dialog">학교영상</a></li>
+				<li><a href="#wizard3-1" data-rel="dialog">학교교가</a></li>
+				<li><a href="#gallery">학교사진</a></li>
+			</ul>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<div class="custom-footer">
+				<img src="logo2.png" class="footer-logo">
+				<div class="footer-address">(47230) 부산광역시 부산진구 양지로 54</div>
+				<div class="footer-contact">TEL : 051-852-0011~3 FAX : 051-860-3270</div>
+			</div>
+		</div>
+	</div>
+	
+	<div data-role="page" id="intro" data-theme="b">
+		<div data-role="header" data-theme="b">
+			<a href="#home" data-icon="arrow-l" data-direction="reverse">처음</a>			
+			<h1>동의과학대학교 소개</h1>
+		</div>
+		<div data-role="content">
+				<div  style="text-align:center">
+					<img src="logo.png" class="school-logo">
+				</div>			
+			<div data-role="collapsible-set" data-theme="b" data-content-theme="e">
+				<div data-role="collapsible" data-collapsed="false">
+					<h3>학교역사</h3>
+					<p>동의과학대학교는 1973년 동의전문학교로 시작하여, 1979년 동의공업전문대학으로, 1998년 동의공업대학으로 교명이 변경되었습니다. 2012년에 현재의 동의과학대학교로 새롭게 출발하여 부산의 대표적인 전문대학으로 성장했습니다.</p>
+				</div>
+				<div data-role="collapsible">
+					<h3>위치와 캠퍼스</h3>
+					<p>부산광역시 부산진구 양지로 54에 위치한 동의과학대학교는 접근성이 뛰어난 도심 캠퍼스를 자랑합니다. 현대적인 교육 시설과 첨단 실습실을 갖추고 있으며, 학생들의 학습과 연구를 위한 최적의 환경을 제공합니다.</p>
+				</div>
+				<div data-role="collapsible" >
+					<h3>학과 및 특성화</h3>
+					<p>공학계열, 보건계열, 예체능계열 등 다양한 학과를 운영하며, 산업체와의 긴밀한 협력을 통한 실무중심 교육을 실시하고 있습니다. 특히 NCS 기반 교육과정과 현장중심 실습교육으로 높은 취업률을 자랑합니다.</p>
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<div class="custom-footer">
+				<img src="logo2.png" class="footer-logo">
+				<div class="footer-address">(47230) 부산광역시 부산진구 양지로 54</div>
+				<div class="footer-contact">TEL : 051-852-0011~3 FAX : 051-860-3270</div>
+			</div>
+		</div>		
+	</div>
+	
+	<div data-role="page" id="movie" data-theme="b">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>동의과학대학교 영상</h1>
+		</div>
+		<div data-role="content" >
+			<div class="ui-bar ui-bar-a">동의과학대학교 공식 홍보영상</div><br/>
+			<li><iframe width="100%" height="240" src="https://www.youtube.com/embed/nAOCy9xraZs"></iframe></li><br/>
+			<div class="ui-bar ui-bar-a">Best of Best DIT</div><br/>
+			<li><iframe width="100%" height="240" src="https://www.youtube.com/embed/bDWeP0Agx54"></iframe></li>
+		</div>
+		<div data-role="footer" data-theme="b">
+		</div>
+	</div>
+	
+	<div data-role="page" id="wizard3-1">
+		<div data-role="header" data-theme="b">
+			<h1>동의과학대학교 교가</h1>
+		</div>
+		<div data-role="content">
+			<div class="ui-bar ui-bar-a">교가 듣기</div><br/>
+			<div style="text-align: center; margin-bottom: 15px;">
+				<audio controls width="100%" preload="metadata" style="margin: 0 auto;">
+					<source src="song.mp3" type="audio/mp3">
+				</audio>
+			</div>
+			<div class="ui-bar ui-bar-a">교가 가사</div><br/>
+			<img src="song.png" alt="교가 가사" width="100%">
+			<div class="ui-bar ui-bar-a">교가 가사</div><br/>
+			<div style="text-align: center; padding: 15px; background-color: #f5f5f5; border-radius: 5px;">
+				<h4 style="text-align: center;">1절</h4>
+				<p style="line-height: 1.8;">
+				동해에 서린정기 황령산에 비치니<br/>
+				여기에 터 - 전 이룬 학문 - 의 전당<br/>
+				슬기롭게 닦아나갈 겨레 - 의 기둥<br/>
+				천세에 길 - 이 빛날 우리의 요 - 람<br/>
+				굳세 - 게 나아가자 민 - 족의 등불<br/>
+				동의의 건 - 학정신 새겨나가자</p>
+				
+				<h4 style="text-align: center; margin-top: 20px;">2절</h4>
+				<p style="line-height: 1.8;">
+				삼국에 지핀서기 이강산에 감도니<br/>
+				새역사 밝 - 혀 나갈 진리 - 의 전당<br/>
+				한 - 결로 기른힘은 나라 - 의 보람<br/>
+				만세에 길 - 이 빛날 우리의 일 – 꾼<br/>
+				힘차 - 게 나아가자 조 - 국의 횃불<br/>
+				동의의 미 - 래상을 그려나가자</p>
+			</div>
+		</div>
+		<div data-role="footer" data-theme="b">
+			<a href="#home" data-direction="reverse">처음으로</a>
+		</div>
+	</div>
+
+	<div data-role="page" id="gallery"  data-theme="b">
+		<div data-role="header" data-position="fixed"  data-theme="b">
+			<a href="#home" data-icon="arrow-l" data-direction="reverse">처음</a>
+			<h1>동의과학대학교 갤러리</h1>
+		</div>
+		<div data-role="content">
+            <!-- 메인 이미지들 -->
+            <div style="margin-bottom: 20px; display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                <a href="dong0.jpg" rel="external" style="width: 90%;">
+                    <img src="dong0.jpg" style="width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" />
+                </a>
+                <a href="dong6.jpg" rel="external" style="width: 90%;">
+                    <img src="dong6.jpg" style="width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" />
+                </a>
+            </div>
+            <!-- 갤러리 그리드 -->
+            <div style="padding: 0 10px;">
+                <div style="display: flex; justify-content: center; gap: 15px;">
+                    <!-- 왼쪽 열 -->
+                    <div style="width: 45%; display: flex; flex-direction: column; gap: 10px;">
+                        <a href="dong1.jpg" rel="external">
+                            <img src="dong1.jpg" style="width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 10px;" />
+                        </a>
+                        <a href="dong2.jpg" rel="external">
+                            <img src="dong2.jpg" style="width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 10px;" />
+                        </a>
+                        <a href="dong3.jpg" rel="external">
+                            <img src="dong3.jpg" style="width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 10px;" />
+                        </a>
+                        <a href="dong4.jpg" rel="external">
+                            <img src="dong4.jpg" style="width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" />
+                        </a>
+                    </div>
+                    <!-- 오른쪽 열 -->
+                    <div style="width: 45%; display: flex; flex-direction: column; gap: 10px;">
+                        <a href="dong5.jpg" rel="external">
+                            <img src="dong5.jpg" style="width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 10px;" />
+                        </a>
+                        <a href="dong7.jpg" rel="external">
+                            <img src="dong7.jpg" style="width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 10px;" />
+                        </a>
+                        <a href="dong8.jpg" rel="external">
+                            <img src="dong8.jpg" style="width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" />
+                        </a>
+						<a href="dong9.jpg" rel="external">
+                            <img src="dong9.jpg" style="width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<div class="custom-footer">
+				<img src="logo2.png" class="footer-logo">
+				<div class="footer-address">(47230) 부산광역시 부산진구 양지로 54</div>
+				<div class="footer-contact">TEL : 051-852-0011~3 FAX : 051-860-3270</div>
+			</div>
+		</div>		
+	</div>
+</div>	
+</body>
+</html>
