@@ -31,8 +31,7 @@
 
 ### 📅 250910 - HTML5/CSS3 기초 프로젝트
 
-#### 1. **개인 포트폴리오 웹사이트** (`myselfpage/`) 
-## 🌐 [Live Demo](https://limseonu.github.io/2025-Hybrid/0910/myselfpage/index.html)
+#### 1. **개인 포트폴리오 웹사이트** (`myselfpage/`) 🌐 [Live Demo](https://limseonu.github.io/2025-Hybrid/0910/myselfpage/index.html)
 - **🎯 목적**: 개인 브랜딩을 위한 전문적인 포트폴리오 웹사이트
 - **💻 기술 스택**: 
   - HTML5 (시맨틱 태그 활용)
@@ -43,24 +42,21 @@
 
 ### 📅 250917 - 포트폴리오 & jQuery Mobile
 
-#### 1. **모바일 포트폴리오** (`carrer/`) 
-## 🌐 [Live Demo](https://limseonu.github.io/2025-Hybrid/0917/mintro.html)
+#### 1. **모바일 포트폴리오** (`carrer/`) 🌐 [Live Demo](https://limseonu.github.io/2025-Hybrid/0917/mintro.html)
 - **💻 기술 스택**: HTML5, CSS3, 반응형 웹 디자인
 - **📱 특징**: 
   - 햄버거 메뉴를 통한 모바일 친화적 내비게이션
   - 프로젝트 카드 형태의 정보 표시
   - 기술 스택 태그 시스템
 
-#### 2. **동의과학대학교 소개 앱** (`dongeui/`) 
-## 🌐 [Live Demo](https://limseonu.github.io/2025-Hybrid/0917/dongeui/dongeui.html)
+#### 2. **동의과학대학교 소개 앱** (`dongeui/`) 🌐 [Live Demo](https://limseonu.github.io/2025-Hybrid/0917/dongeui/dongeui.html)
 - **💻 기술 스택**: jQuery Mobile 1.4.5, HTML5, CSS3
 - **🎯 목적**: 대학 홍보용 모바일 웹 앱
 
 
 ### 📅 250924 - API 연동 & 인터랙티브 웹
 
-#### **부산 미세먼지 실시간 정보 시스템** 
-## 🌐 [Live Demo](https://limseonu.github.io/2025-Hybrid/0924/index.html)
+#### **부산 미세먼지 실시간 정보 시스템** 🌐 [Live Demo](https://limseonu.github.io/2025-Hybrid/0924/index.html)
 - **🎯 목적**: 공공 API를 활용한 실시간 환경 정보 제공 서비스
 - **💻 기술 스택**: 
   - HTML5, CSS3, JavaScript (ES6+)
