@@ -144,8 +144,8 @@ HTML 인라인 JavaScript → **외부 script.js 분리** → 모듈화된 코�
 ```javascript
 const busanDistricts = [
     { name: '중구', code: '26110' },
-    { name: '서구', code: '26140'제용 목적으로 제작되었습니다.
-
+    { name: '서구', code: '26140'
+```
 ## 👥 제작정보
 
 - **개발**: 2025학년도 2학기 하이브리드 웹앱 개발
