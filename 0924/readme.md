@@ -88,8 +88,6 @@ HTML 인라인 JavaScript → **외부 script.js 분리** → 모듈화된 코�
 
 ### API 엔드포인트
 ```javascript
-const API_URL = 'http://apis.data.go.kr/B552584/ArpltnStatsSvc/getCtprvnMesureLIst';
-const SERVICE_KEY = '32bd0d1f6f6e380b10d283f8afc10aec7a8b41b8fed6395b3307d84e28f85b0c';
 ```
 
 ## 💡 사용법
