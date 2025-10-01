@@ -1,0 +1,392 @@
+/* 기본 페이지 구조 - Google Sans 폰트 적용 */
+body {
+    font-family: 'Google Sans', 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #202124;
+}
+
+/* 페이지 구조 */
+.page {
+    display: none;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.page.active {
+    display: flex;
+}
+
+.header {
+    flex-shrink: 0;
+}
+
+.content {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.footer {
+    flex-shrink: 0;
+}
+
+/* 푸터 배경색 오버라이드 */
+.footer.bg-dark {
+    background-color: #5A6C7D !important;
+}
+
+/* Google 브랜드 컬러 - 2024 세련된 톤 */
+.google-text-blue { color: #1a73e8 !important; }
+.google-text-red { color: #ea4335 !important; }
+.google-text-yellow { color: #fbbc04 !important; }
+.google-text-green { color: #34a853 !important; }
+
+/* Google 로고 색상에 맞춘 부드러운 배경 색상 */
+.bg-soft-blue { 
+    background: linear-gradient(135deg, #5A8DEE 0%, #7FB8F5 100%) !important; 
+    box-shadow: 0 2px 12px rgba(90, 141, 238, 0.3);
+}
+.bg-soft-red { 
+    background: linear-gradient(135deg, #F47B7B 0%, #F59E9E 100%) !important; 
+    box-shadow: 0 2px 12px rgba(244, 123, 123, 0.3);
+}
+.bg-soft-green { 
+    background: linear-gradient(135deg, #5BC085 0%, #7DD3A0 100%) !important; 
+    box-shadow: 0 2px 12px rgba(91, 192, 133, 0.3);
+}
+.bg-soft-yellow { 
+    background: linear-gradient(135deg, #FFC85A 0%, #FFD78A 100%) !important; 
+    color: #2D2D2D !important;
+    box-shadow: 0 2px 12px rgba(255, 200, 90, 0.3);
+}
+.bg-soft-info { 
+    background: linear-gradient(135deg, #6B9EF5 0%, #8FB4F7 100%) !important; 
+    box-shadow: 0 2px 12px rgba(107, 158, 245, 0.3);
+}
+.bg-soft-footer { 
+    background: linear-gradient(135deg, #4A5568 0%, #6B7280 100%) !important; 
+}
+
+/* Google 로고 이미지 스타일 - 깔끔하고 세련되게 */
+.google-logo-large {
+    text-align: center;
+    margin: 20px 0 10px 0;
+}
+
+.google-logo-img {
+    width: 110px;
+    height: auto;
+    max-width: 50%;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.google-logo-img:hover {
+    opacity: 0.8;
+}
+
+.google-logo-page {
+    width: 100px;
+    height: auto;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.google-logo-page:hover {
+    opacity: 0.8;
+}
+
+.google-logo-small {
+    font-family: 'Product Sans', 'Google Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+}
+
+/* 헤더 제목 스타일 */
+.header h1 {
+    font-family: 'Product Sans', 'Google Sans', sans-serif;
+    font-weight: 400;
+    font-size: 28px;
+    letter-spacing: -0.5px;
+}
+
+@keyframes googleGradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* 리스트 아이템 스타일 - Google 스타일 */
+.list-group-item {
+    border: none;
+    border-bottom: 1px solid #e8eaed;
+    padding: 16px 20px;
+    transition: all 0.15s ease-in-out;
+    font-weight: 400;
+    color: #202124;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.list-group-item * {
+    cursor: pointer;
+}
+
+/* 메뉴 아이콘 정렬을 위한 고정 너비 */
+.list-group-item .material-icons:not(.text-muted) {
+    width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(60, 64, 67, 0.15);
+}
+
+.list-group-item:hover .material-icons.text-muted {
+    color: #1a73e8 !important;
+    transform: translateX(4px);
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+.list-group-item h6 {
+    font-weight: 500;
+    color: #1a73e8;
+    margin-bottom: 4px;
+}
+
+.list-group-item small {
+    color: #5f6368;
+    font-weight: 400;
+}
+
+/* 카드 스타일 - Google Material Design 3 */
+.card {
+    border: 1px solid #e8eaed;
+    border-radius: 12px;
+    box-shadow: none;
+    transition: all 0.2s ease-in-out;
+    margin-bottom: 16px;
+    background-color: #ffffff;
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px rgba(60, 64, 67, 0.15);
+    border-color: #dadce0;
+}
+
+.card-body {
+    padding: 16px;
+}
+
+.card-title {
+    font-weight: 500;
+    color: #202124;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+/* 아코디언 스타일 - Google 스타일 */
+.accordion-button {
+    font-weight: 500;
+    color: #202124;
+    background-color: #ffffff;
+    border: 1px solid #e8eaed;
+    border-radius: 8px;
+    padding: 16px;
+    font-family: 'Google Sans', sans-serif;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #f8f9fa;
+    color: #1a73e8;
+    border-color: #1a73e8;
+    box-shadow: none;
+}
+
+.accordion-button:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+.accordion-item {
+    border: none;
+    margin-bottom: 8px;
+}
+
+.accordion-body {
+    padding: 16px;
+    color: #5f6368;
+    line-height: 1.6;
+}
+
+/* 푸터 스타일 */
+.footer-address {
+    font-size: 0.9em;
+    margin: 5px 0;
+    opacity: 0.8;
+}
+
+.footer-contact {
+    font-size: 0.85em;
+    margin: 5px 0;
+    opacity: 0.8;
+}
+
+/* 비디오 반응형 - Google 스타일 */
+.ratio {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(60, 64, 67, 0.15);
+    border: 1px solid #e8eaed;
+}
+
+/* 버튼 스타일 개선 */
+.btn {
+    font-family: 'Google Sans', sans-serif;
+    font-weight: 500;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    transition: all 0.2s ease-in-out;
+    text-transform: none;
+}
+
+.btn-light {
+    background-color: #ffffff;
+    border-color: #e8eaed;
+    color: #1a73e8;
+}
+
+.btn-light:hover {
+    background-color: #f8f9fa;
+    border-color: #dadce0;
+    color: #1a73e8;
+}
+
+/* 전체적인 세련된 효과 */
+.container {
+    max-width: 1200px;
+}
+
+.alert {
+    border-radius: 8px;
+    border: 1px solid #e8eaed;
+    font-weight: 400;
+}
+
+.material-icons {
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+/* chevron 아이콘 스타일 */
+.list-group-item .material-icons.text-muted {
+    transition: all 0.2s ease-in-out;
+    font-size: 18px;
+}
+
+/* 추가 애니메이션 효과 */
+.material-icons {
+    vertical-align: middle;
+}
+
+/* 카드 그림자 효과 강화 */
+.card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* 비디오 카드 특별 효과 */
+.ratio iframe {
+    border-radius: 8px;
+}
+
+/* 로딩 애니메이션 */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* 갤러리 이미지 효과 */
+.gallery-image {
+    transition: all 0.3s ease;
+}
+
+.gallery-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
+    filter: brightness(1.1);
+}
+
+/* 모달 스타일링 */
+.modal-content {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    border: none;
+}
+
+.modal-body {
+    padding: 0;
+    position: relative;
+}
+
+.modal-body img {
+    border-radius: 12px;
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+/* X 버튼 스타일링 */
+.modal-body .btn-close {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    opacity: 1;
+}
+
+.modal-body .btn-close::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z' fill='%23333'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.modal-body .btn-close:hover {
+    background: rgba(255, 255, 255, 0.95);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.modal-body .btn-close:focus {
+    box-shadow: 0 0 0 0.2rem rgba(66, 133, 244, 0.25);
+}
