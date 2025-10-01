@@ -17,7 +17,7 @@
 ├── 📁 250910/          # Week 2 - HTML5 & CSS3 기초
 ├── 📁 250917/          # Week 3 - 포트폴리오 & jQuery Mobile
 ├── 📁 250924/          # Week 4 - API 연동 & 인터랙티브 웹
-├──
+├── 📁 2501001/         # Week 5 - Bootstrap 5 & Google Material Design 적용
 ├──
 ├──
 ├──
@@ -61,7 +61,18 @@
 - **💻 기술 스택**: 
   - HTML5, CSS3, JavaScript (ES6+)
   - 공공데이터포털 API 연동
- 
+
+
+ ### 📅 251001 - Bootstrap 5 & Google Material Design 적용
+
+#### **Google 회사 소개 앱** 🌐 [Live Demo](https://limseonu.github.io/2025-Hybrid/1001/index.html)
+- **🎯 목적**: Bootstrap 5와 Google Material Design을 활용한 모바일 친화적 기업 소개 웹 애플리케이션
+- **💻 기술 스택**: 
+  - HTML5, CSS3, JavaScript (Vanilla)
+  - Bootstrap 5 Framework
+  - Google Material Design 3
+  - Google Fonts (Google Sans, Product Sans)
+  - Material Icons
 ---
 
 ## 📞 연락처
