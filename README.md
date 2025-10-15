@@ -74,8 +74,6 @@
   - Google Fonts (Google Sans, Product Sans)
   - Material Icons
 
----
-
 ### 📅 251015 - Apache Cordova 하이브리드 앱 개발 환경 구축
 
 #### **Cordova 개발환경 설정 프로젝트** 📱 
@@ -91,6 +89,8 @@
   - Android 개발 환경 설정 (SDK, Build Tools)
   - 하이브리드 앱 빌드 및 에뮬레이터 실행
   - 크로스 플랫폼 모바일 앱 개발 기초
+
+---
 
 ## 📞 연락처
 
