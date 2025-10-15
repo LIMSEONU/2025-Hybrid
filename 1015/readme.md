@@ -46,9 +46,9 @@ GRADLE_HOME = C:\cordova\gradle-8.10
 
 **Path 추가:**
 ```
-C:\Users\[USERNAME]\AppData\Local\Android\Sdk\build-tools
-C:\Users\[USERNAME]\AppData\Local\Android\Sdk\cmdline-tools\latest\bin
-C:\Users\[USERNAME]\AppData\Local\Android\Sdk\platform-tools
+C:\Users\cutep\AppData\Local\Android\Sdk\build-tools
+C:\Users\cutep\/AppData\Local\Android\Sdk\cmdline-tools\latest\bin
+C:\Users\cutep\AppData\Local\Android\Sdk\platform-tools
 C:\cordova\gradle-8.10\bin
 ```
 
