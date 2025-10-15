@@ -17,8 +17,8 @@
 ├── 📁 250910/          # Week 2 - HTML5 & CSS3 기초
 ├── 📁 250917/          # Week 3 - 포트폴리오 & jQuery Mobile
 ├── 📁 250924/          # Week 4 - API 연동 & 인터랙티브 웹
-├── 📁 2501001/         # Week 5 - Bootstrap 5 & Google Material Design 적용
-├──
+├── 📁 251001/          # Week 5 - Bootstrap 5 & Google Material Design 적용
+├── 📁 251015/          # Week 6 - Apache Cordova 하이브리드 앱 개발 환경 구축
 ├──
 ├──
 ├──
@@ -63,7 +63,7 @@
   - 공공데이터포털 API 연동
 
 
- ### 📅 251001 - Bootstrap 5 & Google Material Design 적용
+### 📅 251001 - Bootstrap 5 & Google Material Design 적용
 
 #### **Google 회사 소개 앱** 🌐 [Live Demo](https://limseonu.github.io/2025-Hybrid/1001/index.html)
 - **🎯 목적**: Bootstrap 5와 Google Material Design을 활용한 모바일 친화적 기업 소개 웹 애플리케이션
@@ -73,7 +73,24 @@
   - Google Material Design 3
   - Google Fonts (Google Sans, Product Sans)
   - Material Icons
+
 ---
+
+### 📅 251015 - Apache Cordova 하이브리드 앱 개발 환경 구축
+
+#### **Cordova 개발환경 설정 프로젝트** 📱 
+- **🎯 목적**: Apache Cordova를 활용한 하이브리드 모바일 앱 개발 환경 구축 및 학습
+- **💻 기술 스택**: 
+  - Apache Cordova Framework
+  - Node.js & npm
+  - Android Studio & SDK
+  - JDK 23 & Gradle 8.10
+  - Android 에뮬레이터
+- **📱 주요 학습 내용**:
+  - Cordova CLI 설치 및 프로젝트 생성
+  - Android 개발 환경 설정 (SDK, Build Tools)
+  - 하이브리드 앱 빌드 및 에뮬레이터 실행
+  - 크로스 플랫폼 모바일 앱 개발 기초
 
 ## 📞 연락처
 
