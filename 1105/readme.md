@@ -449,6 +449,7 @@ JS 파일: 1개
 ### Caps Lock 팀
 
 **GitHub**: [limseonu/2025-Hybrid](https://github.com/limseonu/2025-Hybrid)
+
 **라이브 사이트**: [https://limseonu.github.io/2025-Hybrid/1105/index.html](https://limseonu.github.io/2025-Hybrid/1105/index.html)
 
 **팀원**:
