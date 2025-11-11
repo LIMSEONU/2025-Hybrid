@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="국립중앙박물관 X BTS 소개 페이지 - 무대와 역사, 그리고 이야기" />
+  <title>BTS 소개 - 국립중앙박물관</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* 여백 제거 */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; }
+    
+    /* ========= THEME & TOKENS ========= */
+    :root{
+      /* 너비/여백 */
+      --container-sm: 880px;
+      --container-md: 1100px;
+      --container-lg: 1280px;
+      --container-xl: 1440px;
+      --gutter: 20px;
+
+      /* BTS 색상 테마 */
+      --bts-purple: #5f2c82;
+      --bts-purple-light: #8b5fbf;
+      --bts-purple-dark: #3e1a5e;
+      --bts-black: #0a0a0a;
+      --bts-gold: #d4af37;
+      
+      /* 색/선 */
+      --outline: rgba(95,44,130,.15);
+      --outline-strong: rgba(95,44,130,.3);
+      --panel: #fff;
+      --soft-bg: #f8f5fc;
+      --soft-grad: linear-gradient(180deg,#fff 0%,#f8f5fc 100%);
+      --accent: var(--bts-purple, #5f2c82);
+      --ink: var(--bts-black, #0a0a0a);
+      --muted: var(--text-secondary, #6b7280);
+
+      /* 타이포 */
+      --h1: clamp(2.2rem, 4vw, 3.6rem);
+      --h2: clamp(1.6rem, 2.6vw, 2.2rem);
+      --h3: clamp(1.2rem, 1.8vw, 1.4rem);
+      --lead: clamp(1.05rem, 1.2vw, 1.25rem);
+      --body: 1rem;
+
+      /* 히어로 */
+      --hero-h: 72vh;
+    }
+
+    /* 컨테이너 */
+    .container{ width:100%; max-width: var(--container-lg); margin:0 auto; padding:0 var(--gutter); }
+    @media (min-width:1440px){ .container{ max-width: var(--container-xl);} }
+
+    /* 공통 유틸 */
+    .outlined{ 
+      border:2px solid var(--outline); 
+      border-radius:20px; 
+      background: var(--panel); 
+      box-shadow: 0 8px 25px rgba(95,44,130,.08);
+      transition: all 0.3s ease;
+    }
+    .outlined:hover{
+      border-color: var(--bts-purple-light);
+      box-shadow: 0 12px 35px rgba(95,44,130,.15);
+      transform: translateY(-2px);
+    }
+    .outlined-strong{ border:2px solid var(--outline-strong); }
+    .divider{ height:1px; background: var(--outline); margin: 28px 0; }
+    .section{ padding: clamp(36px,5vw,60px) 0; }
+    .section-header{ margin-bottom: 20px; text-align: left; }
+    .eyebrow{ 
+      display:inline-block; font-weight:800; letter-spacing:.1em; 
+      color:var(--accent);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      background: linear-gradient(135deg, rgba(95,44,130,.1), rgba(139,95,191,.1));
+      border-radius: 20px;
+      border: 1px solid var(--outline);
+    }
+    .kicker{ 
+      display:inline-block; font-weight:800; letter-spacing:.1em; 
+      color:var(--accent);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      background: linear-gradient(135deg, rgba(95,44,130,.1), rgba(139,95,191,.1));
+      border-radius: 20px;
+      border: 1px solid var(--outline);
+    }
+    .muted{ color:var(--muted); }
+    .lead{ font-size: var(--lead); line-height:1.9; color:var(--muted); }
+    .h1{ font-size: var(--h1); font-weight:900; color:var(--ink); letter-spacing:.01em; }
+    .h2{ font-size: var(--h2); font-weight:900; color:var(--ink); }
+    .h3{ font-size: var(--h3); font-weight:800; color:var(--ink); }
+    .btn{ 
+      display:inline-flex; align-items:center; gap:8px; padding:14px 28px; 
+      border-radius:30px; font-weight:700; text-decoration:none; 
+      transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);
+      letter-spacing: 0.5px;
+    }
+    .btn-primary{ 
+      background:linear-gradient(135deg, var(--bts-purple), var(--bts-purple-dark)); 
+      color:#fff;
+      border: 2px solid var(--bts-purple-light);
+      box-shadow: 0 4px 15px rgba(95,44,130,.3);
+    }
+    .btn-primary:hover{ 
+      transform:translateY(-3px) scale(1.05); 
+      box-shadow:0 12px 30px rgba(95,44,130,.5);
+      background:linear-gradient(135deg, var(--bts-purple-light), var(--bts-purple));
+    }
+    .btn-ghost{ 
+      background: rgba(255,255,255,.15); 
+      border:2px solid rgba(255,255,255,.4); 
+      color:#fff;
+      backdrop-filter: blur(10px);
+    }
+    .btn-ghost:hover{ 
+      transform:translateY(-3px) scale(1.05); 
+      background: rgba(255,255,255,.25);
+      box-shadow:0 10px 24px rgba(255,255,255,.2);
+    }
+
+    .back-button{ 
+      position:fixed; top:18px; left:18px; z-index:1000; 
+      padding:10px 18px; border-radius:25px; 
+      background:linear-gradient(135deg, var(--bts-purple), var(--bts-purple-dark)); 
+      border:2px solid var(--bts-purple-light); 
+      box-shadow:0 8px 20px rgba(95,44,130,.3);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .back-button:hover{
+      transform: translateY(-2px);
+      box-shadow:0 12px 28px rgba(95,44,130,.4);
+      background:linear-gradient(135deg, var(--bts-purple-light), var(--bts-purple));
+    }
+    .soft-section{ 
+      background: linear-gradient(180deg, #f8f5fc 0%, #fff 50%, #f8f5fc 100%);
+    }
+
+    /* ========= HERO ========= */
+    .hero{
+      height: var(--hero-h);
+      background: url('images/exhibitions/4.png') center/cover no-repeat;
+      position:relative; 
+      display:flex; 
+      align-items:center; 
+      justify-content:center; 
+      color:#fff; 
+      overflow:hidden;
+      border-bottom: 2px solid rgba(139,95,191,.3);
+      margin: 0;
+      padding: 0;
+    }
+    .hero::before{
+      content:""; position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(95,44,130,.85) 0%, rgba(10,10,10,.65) 45%, rgba(62,26,94,.9) 100%);
+      backdrop-filter:saturate(1.3) brightness(.8);
+    }
+    .hero-inner{ position:relative; z-index:1; text-align:center; max-width: 980px; padding:0 var(--gutter);}
+    .hero .badge{ 
+      display:inline-block; padding:8px 18px; border-radius:25px; font-weight:700; 
+      border:2px solid var(--bts-purple-light); 
+      background:linear-gradient(135deg, var(--bts-purple), var(--bts-purple-dark)); 
+      margin-bottom:16px;
+      box-shadow: 0 4px 15px rgba(139,95,191,.4);
+      letter-spacing: 1px;
+    }
+    .hero h1{ 
+      font-size: var(--h1); margin:.25rem 0 .5rem;
+      text-shadow: 0 4px 20px rgba(95,44,130,.6), 0 2px 10px rgba(0,0,0,.8);
+    }
+    .hero p{ 
+      font-size: clamp(1rem,1.4vw,1.25rem); opacity:.96;
+      text-shadow: 0 2px 8px rgba(0,0,0,.6);
+    }
+    .hero-cta{ 
+      margin-top:28px; 
+      display:inline-flex; 
+      gap:10px; 
+      flex-wrap:wrap;
+      justify-content: center;
+    }
+
+    /* ========= GRID LAYOUTS ========= */
+    /* 12열 레일 기반: desktop에서 대칭/비율 안정 */
+    .grid{ display:grid; gap:18px; }
+    .grid-12{ grid-template-columns: repeat(12, 1fr); gap: 20px; }
+    .span-5{ grid-column: span 5; }
+    .span-6{ grid-column: span 6; }
+    .span-7{ grid-column: span 7; }
+    .span-12{ grid-column: 1 / -1; }
+
+    @media (max-width:1200px){
+      .grid-12{ grid-template-columns: repeat(8,1fr); }
+      .span-7{ grid-column: span 8; }
+      .span-6{ grid-column: span 8; }
+      .span-5{ grid-column: span 8; }
+    }
+    @media (max-width:900px){
+      .grid-12{ grid-template-columns: repeat(6,1fr); }
+      .span-7,.span-6,.span-5{ grid-column: span 6; }
+    }
+    @media (max-width:600px){
+      .grid-12{ grid-template-columns: repeat(4,1fr); }
+      .span-7,.span-6,.span-5{ grid-column: span 4; }
+    }
+
+    /* ========= INTRO (텍스트 강조 + 아웃라인) ========= */
+    .intro .panel{ padding:24px; margin-bottom: 15px; }
+    .intro .panel strong{ color:var(--ink); }
+    .chips{ display:flex; flex-wrap:wrap; gap:14px; margin-top:16px; }
+    .chip{ 
+      display:inline-flex; align-items:center; gap:8px; 
+      padding:10px 18px; border-radius:999px; 
+      border:2px solid var(--bts-purple-light); 
+      background:linear-gradient(135deg, rgba(95,44,130,.08), rgba(139,95,191,.08)); 
+      font-weight:700; 
+      color:var(--bts-purple);
+      transition: all 0.3s ease;
+    }
+    .chip:hover{
+      background:linear-gradient(135deg, var(--bts-purple), var(--bts-purple-light));
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(95,44,130,.3);
+    }
+
+    /* ========= IMAGE BLOCKS (비율 고정 + 캡션) ========= */
+    .figure{ position:relative; overflow:hidden; border-radius:14px; }
+    .figure.outlined{ box-shadow:0 8px 24px rgba(0,0,0,.06); }
+    .figure .media{ width:100%; height:100%; object-fit:cover; display:block; }
+    /* 데스크톱에서 안정적인 가로세로 비율 부여 */
+    .ratio-16x10{ aspect-ratio: 16 / 7; }
+    .ratio-5x4{ aspect-ratio: 5 / 2; }
+    .caption{
+      position:absolute; left:0; right:0; bottom:0; padding:12px 14px;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.65) 100%);
+      color:#fff; font-size:.95rem;
+    }
+    .caption b{ font-weight:800; }
+
+    /* ========= VALUE CARDS (3열 대칭) ========= */
+    .values .cards{ display:grid; grid-template-columns: repeat(3,1fr); gap:18px; }
+    .card{ 
+      padding:24px; 
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--bts-purple), var(--bts-purple-light));
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    .card:hover::before{ transform: scaleX(1); }
+    .card:hover{ 
+      transform: translateY(-6px); 
+      box-shadow:0 16px 40px rgba(95,44,130,.20);
+      border-color: var(--bts-purple-light);
+    }
+    .card .h3{
+      color: var(--bts-purple);
+    }
+    .card p{ margin:.5rem 0 0; color:var(--muted); line-height:1.8; }
+    @media (max-width:900px){ .values .cards{ grid-template-columns: 1fr 1fr; } }
+    @media (max-width:600px){ .values .cards{ grid-template-columns: 1fr; } }
+
+    /* ========= FACTS STRIP (윤곽 강조) ========= */
+    .facts{ display:grid; grid-template-columns: repeat(4,1fr); gap:16px; }
+    .fact{ 
+      text-align:center; 
+      padding:20px 16px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .fact::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--bts-purple), var(--bts-purple-light));
+      border-radius: 2px;
+    }
+    .fact:hover{
+      transform: translateY(-4px);
+      background: linear-gradient(135deg, rgba(95,44,130,.05), rgba(139,95,191,.05));
+    }
+    .fact b{ display:block; font-size:1.15rem; color:var(--bts-purple); font-weight:800; margin-top: 8px; }
+    .fact span{ font-size:.95rem; color:var(--muted); }
+    @media (max-width:900px){ .facts{ grid-template-columns: repeat(2,1fr);} }
+    @media (max-width:600px){ .facts{ grid-template-columns: 1fr;} }
+
+    /* ========= STRIP GALLERY ========= */
+    .strip-gallery{ overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:thin; padding-bottom:8px; }
+    .strip{ display:grid; grid-auto-flow:column; grid-auto-columns:minmax(260px, 26vw); gap:14px; }
+    .thumb{ border-radius:12px; overflow:hidden; border:1px solid var(--outline); background:#000; aspect-ratio: 4/3; }
+    .thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+    /* ========= VIDEO ========= */
+    .video-grid{ display:grid; grid-template-columns: repeat(12,1fr); gap:20px; }
+    .video-card{ 
+      grid-column: span 6; 
+      padding:20px;
+      position: relative;
+    }
+    .video-card::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--bts-purple), var(--bts-purple-light));
+      border-radius: 4px 4px 0 0;
+    }
+    .video-card.emphasis{ 
+      border-color: var(--bts-purple-light); 
+      box-shadow:0 16px 40px rgba(95,44,130,.25);
+      background: linear-gradient(180deg, rgba(95,44,130,.02), transparent);
+    }
+    .video-wrap{ position:relative; width:100%; aspect-ratio:16/9; border-radius:12px; overflow:hidden; background:#000; box-shadow:0 8px 24px rgba(0,0,0,.08); }
+    .video-wrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+    .video-meta h3{ margin:.5rem 0 .3rem; font-size:1.05rem; color:var(--ink); }
+    .video-meta p{ margin:0; font-size:.95rem; color:var(--muted); line-height:1.6; }
+    @media (max-width:900px){ .video-card{ grid-column: span 12; } }
+
+    /* ========= FOOTER ========= */
+    .footer{ 
+      border-top:2px solid var(--outline); 
+      padding:24px 0; 
+      color:var(--muted);
+      background: linear-gradient(180deg, #fff 0%, #f8f5fc 100%);
+    }
+
+    /* ========= SMALL POLISH ========= */
+    /* 본문 안 굵은 강조 구문 스타일 */
+    .lead b, p b, li b{ color:var(--ink); text-decoration-thickness: .08em; text-underline-offset: .18em; }
+    /* 섹션 제목 아래 강조 밑줄 */
+    .underlined{ position:relative; display:inline-block; }
+    .underlined::after{
+      content:""; position:absolute; left:0; right:0; bottom:-8px; height:3px;
+      background: linear-gradient(90deg, var(--bts-purple), var(--bts-purple-light), transparent);
+      border-radius: 2px;
+    }
+
+    @media (max-width:900px){
+      :root{ --hero-h: 64vh; }
+    }
+  </style>
+</head>
+<body>
+  <a href="K-Culture.html" class="back-button">← 돌아가기</a>
+
+  <!-- ========== HERO ========== -->
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="badge">국중박 × BTS</span>
+      <h1 class="h1">BTS: 무대의 기록,<br> 역사와 만나다</h1>
+      <p>한국적 미감과 현대 공연예술이 만날 때, 무대는 하나의 전시가 됩니다. 의상·빛·동선·서사가 만든 디테일을 통해 <b>기록되는 공연</b>을 경험하세요.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#about">소개 보기</a>
+        <a class="btn btn-ghost" href="#gallery">이미지 갤러리</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== INTRO ========== -->
+  <section id="about" class="section intro">
+    <div class="container grid-12">
+      <!-- 텍스트 패널 (좌) -->
+      <div class="span-7 outlined panel">
+        <div class="section-header">
+          <span class="kicker">INTRO</span>
+          <h2 class="h2 underlined">무대예술과 박물관적 시선</h2>
+        </div>
+        <p class="lead">
+          BTS는 음악을 넘어 <b>문화의 언어</b>가 되었습니다. 국립중앙박물관은 한국의 시간과 미감을 바탕으로,
+          무대가 품은 <b>오브제</b>와 <b>기억</b>을 새로운 방식으로 소개합니다. 공연의 순간이 지나가도 기록은 남습니다.
+          우리는 이 기록을 통해 동시대의 감각과 한국적 미의 흐름을 읽어냅니다.
+        </p>
+        <div class="divider"></div>
+        <div class="values">
+          <div class="cards">
+            <article class="outlined card">
+              <div class="h3">1.무대 미학의 디테일</div>
+              <p>재질·색 대비·조명 궤적이 감정의 온도를 결정합니다. 시각·촉각 요소를 박물관의 감식으로 해석합니다.</p>
+            </article>
+            <article class="outlined card">
+              <div class="h3">2.전통과 현대의 공명</div>
+              <p>한글·문양·재료감 등 한국적 요소가 글로벌 무대에서 새로운 울림을 만듭니다.</p>
+            </article>
+            <article class="outlined card">
+              <div class="h3">3.기록과 아카이브</div>
+              <p>사진·영상·무대의상은 공연의 “사후 전시물”이 됩니다. 남겨진 흔적이 다음 세대의 기억을 구성합니다.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <!-- 강조 패널 (우) -->
+      <aside class="span-5 outlined panel soft-section">
+        <div class="section-header">
+          <h3 class="h3">BTS와 문화유산에 대한 관심</h3>
+        </div>
+        <p class="muted">
+          예술·전시·아카이브에 대한 관심은 팬덤과 함께 <b>문화 향유의 폭</b>을 넓혀 왔습니다.
+          공연장을 넘어 <b>박물관·미술관</b>에서 이어지는 감상은 K-컬처의 맥락을 더 깊게 만듭니다.
+        </p>
+        <div class="chips">
+          <span class="chip">#K-컬처</span>
+          <span class="chip">#아카이브</span>
+          <span class="chip">#공연예술</span>
+          <span class="chip">#한국적미감</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ========== IMAGE BLOCKS (대칭/비율 안정) ========== -->
+  <section class="section">
+    <div class="container grid-12">
+      <figure class="span-12 figure outlined ratio-16x10">
+        <img class="media" src="images/exhibitions/bts8.jpg" alt="BTS 무대 이미지 2" />
+        <figcaption class="caption"><b>빛과 군무</b> — 군무의 밀도와 조명의 결이 공간의 리듬을 만듭니다.</figcaption>
+      </figure>
+
+      <div class="span-12 divider"></div>
+
+      <!-- 좌5 / 우7 대칭 -->
+      <figure class="span-5 figure outlined ratio-5x4">
+        <img class="media" src="images/exhibitions/bts6.png" alt="BTS 무대 이미지 3" />
+        <figcaption class="caption"><b>의상과 동선</b> — 동선에 반응하는 의상은 움직임 자체를 시각화합니다.</figcaption>
+      </figure>
+      <figure class="span-7 figure outlined ratio-5x4">
+        <img class="media" src="images/exhibitions/bts7.jpg" alt="BTS 무대 이미지 4" />
+        <figcaption class="caption"><b>현장감의 기록</b> — 잔상처럼 남는 순간들을 전시의 언어로 번역합니다.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ========== FACTS STRIP (윤곽 강조) ========== -->
+  <section class="section soft-section">
+    <div class="container facts">
+      <div class="outlined fact"><b>무대—전시</b><span>공연의 순간을 아카이브로</span></div>
+      <div class="outlined fact"><b>한국적 미감</b><span>문양·색·재료의 현대화</span></div>
+      <div class="outlined fact"><b>팬덤 문화</b><span>참여와 기록의 확장</span></div>
+      <div class="outlined fact"><b>디지털 감상</b><span>온라인 전시의 확장성</span></div>
+    </div>
+  </section>
+
+  <!-- ========== STRIP GALLERY ========== -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <div class="outlined-strong strip-gallery">
+        <div class="strip" style="padding:12px;">
+          <div class="thumb"><img src="images/exhibitions/bts1.png" alt="갤러리 1" /></div>
+          <div class="thumb"><img src="images/exhibitions/bts2.png" alt="갤러리 2" /></div>
+          <div class="thumb"><img src="images/exhibitions/bts3.png" alt="갤러리 3" /></div>
+          <div class="thumb"><img src="images/exhibitions/bts4.png" alt="갤러리 4" /></div>
+          <div class="thumb"><img src="images/exhibitions/bts5.png" alt="갤러리 5" /></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== VIDEO ========== -->
+  <section id="video" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="h2 underlined">영상으로 만나는 BTS</h2>
+      </div>
+      <div class="outlined panel" style="padding:16px;">
+        <div class="video-grid">
+          <article class="video-card outlined emphasis">
+            <div class="video-wrap">
+              <iframe
+                src="https://www.youtube.com/embed/AU6uF5sFtwA?autoplay=1&mute=1&playsinline=1&rel=0&vq=hd1080"
+                title="BTS (방탄소년단) 'ON' Kinetic Manifesto Film : Come Prima"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+              </iframe>
+            </div>
+            <div class="video-meta">
+              <h3>ON (Kinetic Manifesto Film)</h3>
+              <p>압도적인 퍼포먼스와 타격감. 리듬·구성·구도의 긴장을 집중해 보세요.</p>
+            </div>
+          </article>
+
+          <article class="video-card outlined">
+            <div class="video-wrap">
+              <iframe
+                src="https://www.youtube.com/embed/ErTgtL1Tjns?autoplay=1&mute=1&playsinline=1&rel=0&vq=hd1080"
+                title="BTS (방탄소년단) 'Black Swan' Official MV"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+              </iframe>
+            </div>
+            <div class="video-meta">
+              <h3>Black Swan (Official MV)</h3>
+              <p>예술가의 몰입과 두려움을 다룬 서정적 영상미. 움직임과 그림자의 결을 느껴보세요.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="section">
+    <div class="container" style="text-align:center;">
+      <div class="outlined panel" style="padding:26px;">
+        <h3 class="h3" style="margin-bottom:8px;">전시는 계속됩니다</h3>
+        <p class="muted">더 많은 이야기는 온라인 전시관에서 이어집니다. 당신의 화면은 또 하나의 전시실입니다.</p>
+        <div style="margin-top:14px;">
+          <a class="btn btn-primary" href="index.html#exhibitions">온라인 전시 가기</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container" style="text-align:center;">
+      <p style="margin-top: 8px;">
+        <strong style="color: #8b5fbf; font-weight: 700;">&copy;Caps Lock</strong> 
+        <span style="color: #6b7280;">임선우 / 권법진 / 김종현</span>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

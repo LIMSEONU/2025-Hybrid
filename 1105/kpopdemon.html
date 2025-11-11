@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="국립중앙박물관 X K-pop Demon Hunters - 한국 전통 무기와 만나다" />
+  <title>K-pop Demon Hunters - 국립중앙박물관</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* 여백 제거 */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; }
+    
+    /* ========= THEME & TOKENS ========= */
+    :root{
+      /* 너비/여백 */
+      --container-sm: 880px;
+      --container-md: 1100px;
+      --container-lg: 1280px;
+      --container-xl: 1440px;
+      --gutter: 20px;
+
+      /* K-pop Demon Hunters 색상 테마 */
+      --demon-red: #c41e3a;
+      --demon-dark: #1a0a0f;
+      --demon-purple: #6b1a44;
+      --demon-gold: #d4af37;
+      --demon-orange: #ff4500;
+      
+      /* 색/선 */
+      --outline: rgba(196,30,58,.15);
+      --outline-strong: rgba(196,30,58,.3);
+      --panel: #fff;
+      --soft-bg: #fef5f5;
+      --soft-grad: linear-gradient(180deg,#fff 0%,#fef5f5 100%);
+      --accent: var(--demon-red, #c41e3a);
+      --ink: var(--demon-dark, #1a0a0f);
+      --muted: var(--text-secondary, #6b7280);
+
+      /* 타이포 */
+      --h1: clamp(2.2rem, 4vw, 3.6rem);
+      --h2: clamp(1.6rem, 2.6vw, 2.2rem);
+      --h3: clamp(1.2rem, 1.8vw, 1.4rem);
+      --lead: clamp(1.05rem, 1.2vw, 1.25rem);
+      --body: 1rem;
+
+      /* 히어로 */
+      --hero-h: 72vh;
+    }
+
+    /* 컨테이너 */
+    .container{ width:100%; max-width: var(--container-lg); margin:0 auto; padding:0 var(--gutter); }
+    @media (min-width:1440px){ .container{ max-width: var(--container-xl);} }
+
+    /* 공통 유틸 */
+    .outlined{ 
+      border:2px solid var(--outline); 
+      border-radius:20px; 
+      background: var(--panel); 
+      box-shadow: 0 8px 25px rgba(196,30,58,.08);
+      transition: all 0.3s ease;
+    }
+    .outlined:hover{
+      border-color: var(--demon-red);
+      box-shadow: 0 12px 35px rgba(196,30,58,.15);
+      transform: translateY(-2px);
+    }
+    .outlined-strong{ border:2px solid var(--outline-strong); }
+    .divider{ height:1px; background: var(--outline); margin: 28px 0; }
+    .section{ padding: clamp(36px,5vw,60px) 0; }
+    .section-header{ margin-bottom: 20px; text-align: center; }
+    .kicker{ 
+      display:inline-block; font-weight:800; letter-spacing:.1em; 
+      color:var(--accent);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      background: linear-gradient(135deg, rgba(196,30,58,.1), rgba(255,69,0,.1));
+      border-radius: 20px;
+      border: 1px solid var(--outline);
+    }
+    .muted{ color:var(--muted); }
+    .lead{ font-size: var(--lead); line-height:1.9; color:var(--muted); }
+    .h1{ font-size: var(--h1); font-weight:900; color:var(--ink); letter-spacing:.01em; }
+    .h2{ font-size: var(--h2); font-weight:900; color:var(--ink); }
+    .h3{ font-size: var(--h3); font-weight:800; color:var(--ink); }
+    .btn{ 
+      display:inline-flex; align-items:center; gap:8px; padding:14px 28px; 
+      border-radius:30px; font-weight:700; text-decoration:none; 
+      transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);
+      letter-spacing: 0.5px;
+    }
+    .btn-primary{ 
+      background:linear-gradient(135deg, var(--demon-red), var(--demon-purple)); 
+      color:#fff;
+      border: 2px solid var(--demon-orange);
+      box-shadow: 0 4px 15px rgba(196,30,58,.3);
+    }
+    .btn-primary:hover{ 
+      transform:translateY(-3px) scale(1.05); 
+      box-shadow:0 12px 30px rgba(196,30,58,.5);
+      background:linear-gradient(135deg, var(--demon-orange), var(--demon-red));
+    }
+    .btn-ghost{ 
+      background: rgba(255,255,255,.15); 
+      border:2px solid rgba(255,255,255,.4); 
+      color:#fff;
+      backdrop-filter: blur(10px);
+    }
+    .btn-ghost:hover{ 
+      transform:translateY(-3px) scale(1.05); 
+      background: rgba(255,255,255,.25);
+      box-shadow:0 10px 24px rgba(255,255,255,.2);
+    }
+
+    .back-button{ 
+      position:fixed; top:18px; left:18px; z-index:1000; 
+      padding:10px 18px; border-radius:25px; 
+      background:linear-gradient(135deg, var(--demon-red), var(--demon-dark)); 
+      border:2px solid var(--demon-orange); 
+      box-shadow:0 8px 20px rgba(196,30,58,.3);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .back-button:hover{
+      transform: translateY(-2px);
+      box-shadow:0 12px 28px rgba(196,30,58,.4);
+      background:linear-gradient(135deg, var(--demon-orange), var(--demon-red));
+    }
+    .soft-section{ 
+      background: linear-gradient(180deg, #fef5f5 0%, #fff 50%, #fef5f5 100%);
+    }
+
+    /* ========= HERO ========= */
+    .hero{
+      height: var(--hero-h);
+      background: url('images/exhibitions/huntx.png') center/cover no-repeat;
+      position:relative; 
+      display:flex; 
+      align-items:center; 
+      justify-content:center; 
+      color:#fff; 
+      overflow:hidden;
+      border-bottom: 2px solid rgba(255,69,0,.3);
+      margin: 0;
+      padding: 0;
+    }
+    .hero::before{
+      content:""; position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(196,30,58,.85) 0%, rgba(26,10,15,.65) 45%, rgba(107,26,68,.9) 100%);
+      backdrop-filter:saturate(1.3) brightness(.8);
+    }
+    .hero-inner{ position:relative; z-index:1; text-align:center; max-width: 980px; padding:0 var(--gutter);}
+    .hero .badge{ 
+      display:inline-block; padding:8px 18px; border-radius:25px; font-weight:700; 
+      border:2px solid var(--demon-orange); 
+      background:linear-gradient(135deg, var(--demon-red), var(--demon-dark)); 
+      margin-bottom:16px;
+      box-shadow: 0 4px 15px rgba(255,69,0,.4);
+      letter-spacing: 1px;
+    }
+    .hero h1{ 
+      font-size: var(--h1); margin:.25rem 0 .5rem;
+      text-shadow: 0 4px 20px rgba(196,30,58,.6), 0 2px 10px rgba(0,0,0,.8);
+    }
+    .hero p{ 
+      font-size: clamp(1rem,1.4vw,1.25rem); opacity:.96;
+      text-shadow: 0 2px 8px rgba(0,0,0,.6);
+    }
+    .hero-cta{ 
+      margin-top:28px; 
+      display:inline-flex; 
+      gap:10px; 
+      flex-wrap:wrap;
+      justify-content: center;
+    }
+
+    /* ========= VIDEO ========= */
+    .video-section{
+      background: linear-gradient(180deg, #fff8f8 0%, #ffecec 12%, #ffe5e5 20%, #ffdede 28%, #ffd4d4 36%, #ffcbcb 44%, #ffc2c2 52%, #ffb8b8 60%, #ffafaf 68%, #ffa5a5 76%, #f29999 84%, #e68f8f 92%, #d99999 100%);
+      padding: clamp(40px,6vw,80px) 0;
+    }
+    .video-wrap{ 
+      position:relative; 
+      width:100%; 
+      max-width: 900px;
+      margin: 0 auto;
+      aspect-ratio:16/9; 
+      border-radius:16px; 
+      overflow:hidden; 
+      background:#000; 
+      box-shadow:0 12px 40px rgba(196,30,58,.3);
+      border: 2px solid var(--demon-red);
+    }
+    .video-wrap video{ 
+      position:absolute; 
+      inset:0; 
+      width:100%; 
+      height:100%; 
+      object-fit: cover;
+    }
+
+    /* ========= CHARACTERS ========= */
+    .characters{ 
+      padding: clamp(50px,7vw,100px) 0;
+      background: linear-gradient(180deg, #d99999 0%, #dda3a3 8%, #e1adad 16%, #e6b7b7 24%, #eac1c1 32%, #efcccc 40%, #f3d6d6 48%, #f7e0e0 56%, #fbeaea 64%, #fef3f3 72%, #fff8f8 80%, #fffcfc 90%, #fff 100%);
+    }
+    .character-grid{ 
+      display:grid; 
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+      gap:32px; 
+      margin-top: 40px;
+    }
+    .character-card{
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(196,30,58,.12);
+      border: 2px solid var(--outline);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .character-card::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--demon-red), var(--demon-orange));
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+    .character-card:hover::before{ transform: scaleX(1); }
+    .character-card:hover{
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 16px 45px rgba(196,30,58,.25);
+      border-color: var(--demon-red);
+    }
+    .character-info{
+      padding: 28px;
+    }
+    .character-name{
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--demon-red);
+      margin-bottom: 8px;
+    }
+    .character-role{
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--demon-purple);
+      margin-bottom: 12px;
+    }
+    .character-weapon{
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .character-voice{
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.6;
+    }
+    .weapon-image{
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 1.2rem;
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* ========= MUSEUM LINK ========= */
+    .museum-link{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 8px 16px;
+      background: linear-gradient(135deg, rgba(196,30,58,.1), rgba(255,69,0,.1));
+      border: 1px solid var(--outline);
+      border-radius: 20px;
+      color: var(--demon-red);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    .museum-link:hover{
+      background: linear-gradient(135deg, var(--demon-red), var(--demon-orange));
+      color: #fff;
+      transform: translateX(4px);
+      box-shadow: 0 4px 12px rgba(196,30,58,.3);
+    }
+
+    /* ========= FOOTER ========= */
+    .footer{ 
+      border-top:2px solid var(--outline); 
+      padding:24px 0; 
+      color:var(--muted);
+      background: linear-gradient(180deg, #fff 0%, #fef5f5 100%);
+    }
+
+    /* ========= UNDERLINE ========= */
+    .underlined{ position:relative; display:inline-block; }
+    .underlined::after{
+      content:""; position:absolute; left:0; right:0; bottom:-8px; height:3px;
+      background: linear-gradient(90deg, var(--demon-red), var(--demon-orange), transparent);
+      border-radius: 2px;
+    }
+
+    @media (max-width:900px){
+      :root{ --hero-h: 64vh; }
+      .character-grid{ 
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="K-Culture.html" class="back-button">← 돌아가기</a>
+
+  <!-- ========== HERO ========== -->
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="badge">국중박 × 케데헌</span>
+      <h1 class="h1">K-pop Demon Hunters: 한국 전통 유물의 재탄생</h1>
+      <p>K-pop과 한국 역사의 만남. 전통 유물이 현대 애니메이션 속에서 새로운 생명을 얻다.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#characters">캐릭터 보기</a>
+        <a class="btn btn-ghost" href="#video">영상 보기</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== VIDEO ========== -->
+  <section id="video" class="video-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="kicker">HUNTR/X</span>
+        <h2 class="h2" style="color: var(--demon-dark); margin-top: 12px;">K-pop Demon Hunters</h2>
+      </div>
+      <div class="video-wrap">
+        <video controls autoplay muted loop poster="images/exhibitions/huntx.png">
+          <source src="images/exhibitions/huntx.mp4" type="video/mp4">
+          브라우저가 비디오를 지원하지 않습니다.
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CHARACTERS ========== -->
+  <section id="characters" class="section characters">
+    <div class="container">
+      <div class="section-header">
+        <span class="kicker">CHARACTERS</span>
+        <h2 class="h2 underlined">등장인물 & 한국 전통 유물</h2>
+      </div>
+
+      <div class="character-grid">
+        <!-- 루미 -->
+        <article class="character-card">
+          <div class="weapon-image" style="background-image: url('images/exhibitions/sword1.png');">
+            <!-- 사인참사검 이미지 위치 -->
+          </div>
+          <div class="character-info">
+            <h3 class="character-name">루미 (Rumi)</h3>
+            <div class="character-role">리더 겸 메인보컬</div>
+            <div class="character-weapon">🗡️ 주무기: 사인참사검 (四寅斬邪劍)</div>
+            <div class="character-voice">
+              성우: 아덴 조, 루미 옥(어린 시절) / 신나리 / 코토부키 미나코
+            </div>
+            <a href="https://www.emuseum.go.kr/headerSearch?category=&rows=9&pageNum=1&radioSearchCheck=unifiedSearch&headerSearch=&keywordHistory=철제+금은입사+사인참사검&searchType=&keyword=철제+금은입사+사인참사검" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="museum-link">
+              박물관 유물 정보 보기 →
+            </a>
+          </div>
+        </article>
+
+        <!-- 미라 -->
+        <article class="character-card">
+          <div class="weapon-image" style="background-image: url('images/exhibitions/sword2.png');">
+            <!-- 곡도(월도) 이미지 위치 -->
+          </div>
+          <div class="character-info">
+            <h3 class="character-name">미라 (Mira)</h3>
+            <div class="character-role">메인댄서 겸 비주얼계 담당</div>
+            <div class="character-weapon">🌙 주무기: 곡도 (월도, 月刀)</div>
+            <div class="character-voice">
+              성우: 메이 홍 / 김도영 / 타무라 무츠미
+            </div>
+            <a href="https://www.emuseum.go.kr/headerSearch?category=&rows=9&pageNum=1&radioSearchCheck=unifiedSearch&headerSearch=&keywordHistory=월도(月刀)&keyword=월도(月刀)" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="museum-link">
+              박물관 유물 정보 보기 →
+            </a>
+          </div>
+        </article>
+
+        <!-- 조이 -->
+        <article class="character-card">
+          <div class="weapon-image" style="background-image: url('images/exhibitions/sword3.png');">
+            <!-- 신칼(대신칼) 이미지 위치 -->
+          </div>
+          <div class="character-info">
+            <h3 class="character-name">조이 (Zoey)</h3>
+            <div class="character-role">막내 겸 메인래퍼, 작사 담당</div>
+            <div class="character-weapon">⚔️ 주무기: 신칼 (대신칼)</div>
+            <div class="character-voice">
+              성우: 유지영 / 김예림 / 와타야 미호
+            </div>
+            <a href="https://www.emuseum.go.kr/headerSearch?category=&rows=9&pageNum=1&radioSearchCheck=unifiedSearch&headerSearch=&keywordHistory=대신칼&searchType=&keyword=대신칼" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="museum-link">
+              박물관 유물 정보 보기 →
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 전통 모티브 캐릭터 ========== -->
+  <section class="section soft-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="kicker">TRADITIONAL MOTIFS</span>
+        <h2 class="h2 underlined">전통 회화의 영감을 받은 캐릭터</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; max-width: 100%;">
+        <!-- 더피 (호랑이) -->
+        <article class="outlined" style="padding: 0; overflow: hidden; max-width: 100%;">
+          <div style="width: 100%; aspect-ratio: 16/10; background: linear-gradient(135deg, #fef3e0 0%, #ffe5b4 100%); display: flex; align-items: center; justify-content: center; background-image: url('images/exhibitions/tiger1.png'); background-size: cover; background-position: center;">
+          </div>
+          <div style="padding: 24px;">
+            <h3 style="font-size: 1.6rem; font-weight: 800; color: var(--demon-orange); margin-bottom: 12px;">
+              🐯 더피 (호랑이)
+            </h3>
+            <div style="font-size: 0.95rem; color: var(--muted); line-height: 1.8;">
+              <p style="margin-bottom: 12px;">
+                애니메이션 속 호랑이는 다소 우스꽝스럽고 둔해 보이지만, 미워할 수 없는 매력적인 존재로 그려집니다.
+              </p>
+              <p style="margin-bottom: 12px;">
+                이는 전통 회화인 <strong style="color: var(--demon-red);">호작도(虎鵲圖)</strong> 속 호랑이의 익살스럽고 친근한 모습에서 모티브를 얻었습니다.
+              </p>
+              <p style="margin: 0;">
+                두려움의 상징이던 호랑이는 오늘날 <strong>유머와 따뜻함</strong>을 담은 문화적 아이콘으로 재해석되고 있습니다.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 서씨 (까치) -->
+        <article class="outlined" style="padding: 0; overflow: hidden; max-width: 100%;">
+          <div style="width: 100%; aspect-ratio: 16/10; background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); display: flex; align-items: center; justify-content: center; background-image: url('images/exhibitions/kkachi1.png'); background-size: cover; background-position: center;">
+          </div>
+          <div style="padding: 24px;">
+            <h3 style="font-size: 1.6rem; font-weight: 800; color: var(--demon-purple); margin-bottom: 12px;">
+              🦅 서씨 (까치)
+            </h3>
+            <div style="font-size: 0.95rem; color: var(--muted); line-height: 1.8;">
+              <p style="margin-bottom: 12px;">
+                세 개의 눈을 가진 까치 캐릭터로, 전통적으로 <strong style="color: var(--demon-red);">길조(吉鳥)</strong>로 여겨진 까치의 상징성을 현대적으로 표현했습니다.
+              </p>
+              <p style="margin-bottom: 12px;">
+                <strong>호작도</strong>에서 호랑이와 함께 등장하던 까치는 기쁜 소식을 전하는 존재로 알려져 있습니다.
+              </p>
+              <p style="margin: 0;">
+                애니메이션 속에서도 밝고 희망적인 메시지를 전달하는 역할을 맡고 있습니다.
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- 호작도 설명 -->
+      <div class="outlined" style="margin-top: 40px; padding: 24px; background: linear-gradient(135deg, rgba(196,30,58,.05), rgba(255,69,0,.05)); max-width: 100%; box-sizing: border-box;">
+        <h4 style="font-size: 1.3rem; font-weight: 700; color: var(--demon-red); margin-bottom: 15px; text-align: center;">
+          📜 호작도(虎鵲圖)란?
+        </h4>
+        <p style="font-size: 1rem; color: var(--muted); line-height: 1.8; text-align: center; max-width: 800px; margin: 0 auto;">
+          호랑이와 까치를 함께 그린 한국 전통 회화로, 위엄 있는 호랑이와 영리한 까치의 대비를 통해 <strong>해학과 풍자</strong>를 담아냈습니다.
+          민화에서 자주 등장하는 소재로, 복과 기쁨을 상징하며 서민들에게 큰 사랑을 받았습니다.
+        </p>
+      </div>
+
+      <!-- 호작도 영상 -->
+      <div style="margin-top: 40px;">
+        <div class="video-wrap" style="max-width: 800px; margin: 0 auto;">
+          <video controls autoplay muted loop poster="images/exhibitions/tiger1.png">
+            <source src="images/exhibitions/tigerkkachi.mp4" type="video/mp4">
+            브라우저가 비디오를 지원하지 않습니다.
+          </video>
+        </div>
+        <p style="text-align: center; margin-top: 16px; font-size: 0.9rem; color: var(--muted);">
+          호작도 속 더피와 서씨의 익살스러운 만남
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 사자 보이즈 ========== -->
+  <section class="section" style="background: linear-gradient(180deg, #fff5f5 0%, #ffe8e8 10%, #ffc9c9 20%, #ff9999 30%, #e67373 40%, #b85555 50%, #8a3d3d 60%, #5c2828 70%, #3d1a1a 80%, #2a1520 90%, #1a0a14 100%);">
+    <div class="container">
+      <div class="section-header">
+        <span class="kicker" style="background: linear-gradient(135deg, rgba(157,23,77,.3), rgba(190,24,93,.3)); border-color: rgba(157,23,77,.5); color: #f472b6;">SAJA BOYS</span>
+        <h2 class="h2" style="color: #fbbf24;">사자 보이즈 (獅子/死者/使者)</h2>
+      </div>
+
+      <!-- 메인 이미지 -->
+      <div style="margin-top: 40px;">
+        <div class="outlined" style="overflow: hidden; border-color: rgba(157,23,77,.4); box-shadow: 0 12px 40px rgba(157,23,77,.3); background: #1a0a14;">
+          <img src="images/exhibitions/sajaboys.png" alt="사자 보이즈" style="width: 100%; height: auto; display: block;">
+          <div style="padding: 16px; background: linear-gradient(135deg, #3b1a2a, #4a1f35); text-align: center;">
+            <p style="margin: 0; font-size: 0.95rem; color: #fbbf24; font-weight: 600;">
+              미스터리 · 애덤 · 진우 · 베이비 · 로맥스
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 영상 -->
+      <div style="margin-top: 40px;">
+        <div class="outlined" style="padding: 0; overflow: hidden; border-color: rgba(157,23,77,.4); box-shadow: 0 12px 40px rgba(157,23,77,.3); background: #1a0a14;">
+          <div class="video-wrap" style="border-radius: 0; border: none;">
+            <video controls autoplay muted loop poster="images/exhibitions/sajaboys.png">
+              <source src="images/exhibitions/sajaboys.mp4" type="video/mp4">
+              브라우저가 비디오를 지원하지 않습니다.
+            </video>
+          </div>
+          <div style="padding: 16px; background: linear-gradient(135deg, #3b1a2a, #4a1f35); text-align: center;">
+            <p style="margin: 0; font-size: 0.95rem; color: #fbbf24; font-weight: 600;">
+              악귀의 형태가 드러난 모습
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 설명 -->
+      <div class="outlined" style="margin-top: 40px; padding: 30px; background: linear-gradient(135deg, rgba(157,23,77,.15), rgba(190,24,93,.15)); border-color: rgba(157,23,77,.4); max-width: 100%; box-sizing: border-box;">
+        <h3 style="font-size: 1.5rem; font-weight: 800; color: #fbbf24; margin-bottom: 20px; text-align: center;">
+          🦁 사자 보이즈 (SAJA BOYS)
+        </h3>
+        <div style="font-size: 1rem; color: #d1d5db; line-height: 1.9; max-width: 900px; margin: 0 auto;">
+          <p style="margin-bottom: 16px; text-align: center; font-weight: 600; color: #fbbf24;">
+            '사자 보이즈'는 전통적 상징인 <strong style="color: #f472b6;">사자(獅子)</strong>의 이미지를 현대적으로 재해석한 창작 그룹입니다.
+          </p>
+          
+          <p style="margin-bottom: 16px; color: #e5e7eb;">
+            그룹명 <strong style="color: #fbbf24;">'사자'</strong>는 세 가지의 중의적 의미를 지닙니다.
+          </p>
+
+          <div style="padding: 20px; background: rgba(26,10,20,.6); border-radius: 12px; margin-bottom: 16px; border-left: 4px solid #fbbf24; backdrop-filter: blur(10px);">
+            <p style="margin-bottom: 12px; color: #e5e7eb;">
+              <strong style="color: #fbbf24; font-size: 1.1rem;">① 사자(獅子)</strong><br>
+              로고와 팬덤명 <strong style="color: #f472b6;">프라이드(Pride)</strong>에서 알 수 있듯, 대중에게는 힘과 용기의 상징인 동물 사자를 뜻합니다.
+            </p>
+          </div>
+
+          <div style="padding: 20px; background: rgba(26,10,20,.6); border-radius: 12px; margin-bottom: 16px; border-left: 4px solid #ec4899; backdrop-filter: blur(10px);">
+            <p style="margin-bottom: 12px; color: #e5e7eb;">
+              <strong style="color: #ec4899; font-size: 1.1rem;">② 사자(死者)</strong><br>
+              멤버 전원이 <strong style="color: #f472b6;">귀신</strong>으로 설정되어 있어 '죽은 사람'을 의미하며, 현실과 저승의 경계를 넘나드는 독특한 세계관을 형성합니다.
+            </p>
+          </div>
+
+          <div style="padding: 20px; background: rgba(26,10,20,.6); border-radius: 12px; margin-bottom: 16px; border-left: 4px solid #f472b6; backdrop-filter: blur(10px);">
+            <p style="margin-bottom: 0; color: #e5e7eb;">
+              <strong style="color: #f472b6; font-size: 1.1rem;">③ 사자(使者)</strong><br>
+              <strong style="color: #fbbf24;">저승의 심부름꾼</strong>을 뜻하며, 인간의 영혼을 인도하는 존재로서의 상징을 담고 있습니다.
+            </p>
+          </div>
+
+          <p style="margin: 20px 0 0; padding: 16px; background: linear-gradient(135deg, rgba(59,26,42,.8), rgba(74,31,53,.8)); border-radius: 12px; text-align: center; font-weight: 600; color: #fbbf24; backdrop-filter: blur(10px);">
+            또한 <strong style="color: #f472b6;">보이즈(Boys)</strong>는 <strong style="color: #ec4899;">보이스(Voice)</strong>와 발음이 유사해,<br>
+            '<strong style="color: #fbbf24;">저승사자의 목소리</strong>'라는 상징적 의미로 확장됩니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- 한국 전통 유물 소제목 -->
+      <div style="margin-top: 60px; text-align: center;">
+        <h3 style="font-size: 1.6rem; font-weight: 800; color: #fbbf24; margin-bottom: 10px;">
+          한국 전통 유물
+        </h3>
+        <p style="font-size: 1rem; color: #d1d5db; max-width: 700px; margin: 0 auto;">
+          사자보이즈 캐릭터들과 함께 등장하는 <br>한국의 전통 문화유산
+        </p>
+      </div>
+
+      <!-- 갓 카드 -->
+      <div class="outlined" style="margin-top: 30px; padding: 0; overflow: hidden; border-color: rgba(157,23,77,.4); box-shadow: 0 12px 40px rgba(157,23,77,.3); background: #1a0a14; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <div style="width: 100%; aspect-ratio: 16/10; background: linear-gradient(135deg, #2a1520, #3d1a1a); display: flex; align-items: center; justify-content: center; background-image: url('images/exhibitions/goat.png'); background-size: cover; background-position: center;">
+        </div>
+        <div style="padding: 28px; background: linear-gradient(135deg, #3b1a2a, #4a1f35);">
+          <h3 style="font-size: 1.8rem; font-weight: 800; color: #fbbf24; margin-bottom: 12px;">
+            🎩 갓 (Gat)
+          </h3>
+          <div style="font-size: 0.95rem; color: #d1d5db; line-height: 1.8;">
+            <p style="margin-bottom: 12px; color: #e5e7eb;">
+              조선시대 양반의 품격과 권위를 나타내는 대표적인 전통 의관입니다.
+            </p>
+            <p style="margin-bottom: 12px; color: #e5e7eb;">
+              <strong style="color: #fbbf24;">갓</strong>은 신분의 상징이자, 조선 선비의 정신과 철학을 담고 있는 문화유산입니다.
+            </p>
+            <p style="margin: 0; color: #e5e7eb;">
+              애니메이션 속에서 등장하는 갓은 전통과 현대를 잇는 상징적 요소로 재해석되었습니다.
+            </p>
+          </div>
+          <a href="https://www.emuseum.go.kr/headerSearch?category=&rows=9&pageNum=1&radioSearchCheck=unifiedSearch&headerSearch=&keywordHistory=%EA%B0%93&searchType=&keyword=%EA%B0%93" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             style="display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 10px 20px; background: linear-gradient(135deg, rgba(251,191,36,.2), rgba(244,114,182,.2)); border: 2px solid rgba(251,191,36,.4); border-radius: 25px; color: #fbbf24; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: all 0.3s ease;">
+            박물관 유물 정보 보기 →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="section">
+    <div class="container" style="text-align:center;">
+      <div class="section-header">
+        <span class="kicker">E-MUSEUM</span>
+        <h2 class="h2 underlined" style="margin-top: 12px;">한국 전통 무기의 재발견</h2>
+      </div>
+      <div class="outlined panel" style="padding:26px; margin-top: 30px;">
+        <p class="lead" style="margin-bottom: 16px;">애니메이션 속 무기들의 실제 모습을 국립중앙박물관 e뮤지엄에서 만나보세요.</p>
+        <div style="margin-top:20px;">
+          <a class="btn btn-primary" href="https://www.emuseum.go.kr/" target="_blank" rel="noopener noreferrer">e뮤지엄 바로가기</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container" style="text-align:center;">
+      <p style="margin-top: 8px;">
+        <strong style="color: var(--demon-red); font-weight: 700;">&copy;Caps Lock</strong> 
+        <span style="color: var(--muted);">임선우 / 권법진 / 김종현</span>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

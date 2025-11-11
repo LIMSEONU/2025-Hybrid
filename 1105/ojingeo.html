@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오징어게임 - 전통놀이의 현대적 해석</title>
+    <style>
+        /* ========= THEME & TOKENS ========= */
+        :root {
+            /* Colors - Squid Game Theme */
+            --red: #ff0000;        /* Pure red */
+            --red-dark: #cc0000;   /* Darker red */
+            --red-light: #ff4d4d;  /* Lighter red */
+            --black: #000000;      /* Pure black */
+            --dark: #0a0a0a;       /* Dark gray */
+            --green: #00ff00;      /* Pure green */
+            --outline: rgba(255,0,0,0.3);
+            --outline-strong: rgba(255,0,0,0.6);
+            --panel: #0a0a0a;      /* Dark panels */
+            --soft-bg: #111111;    /* Slightly lighter black */
+            --soft-grad: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
+            --accent: var(--red);
+            --ink: #ff4d4d;        /* Red text */
+            --muted: #ff8080;      /* Light red for muted text */
+            
+            /* Typography */
+            --h1: clamp(2.2rem, 4vw, 3.6rem);
+            --h2: clamp(1.6rem, 2.6vw, 2.2rem);
+            --h3: clamp(1.2rem, 1.8vw, 1.4rem);
+            --lead: clamp(1.05rem, 1.2vw, 1.25rem);
+            --body: 1rem;
+            
+            /* Layout */
+            --container-sm: 880px;
+            --container-md: 1100px;
+            --container-lg: 1280px;
+            --gutter: 20px;
+            --hero-h: 72vh;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: var(--ink);
+            background-color: var(--black);
+            margin: 0;
+            padding: 0;
+            background-image: url('images/exhibitions/6.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-color: #000000;
+        }
+        
+        /* Add a dark overlay to the body */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: -1;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: var(--container-lg);
+            margin: 0 auto;
+            padding: 0 var(--gutter);
+        }
+        
+        /* ========= HERO ========= */
+        /* Reset default margin and padding */
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Back Button Styles */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 0, 0, 0.2);
+            color: var(--red-light);
+            border: 1px solid var(--red);
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+        
+        .back-button:hover {
+            background: rgba(255, 0, 0, 0.3);
+            transform: translateX(-4px);
+        }
+        
+        .back-button svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .hero {
+            height: 60vh;
+            min-height: 400px;
+            max-height: 600px;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, transparent 50%, rgba(0, 0, 0, 0.9) 100%), 
+                        linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, transparent 50%, rgba(0, 0, 0, 0.8) 100%),
+                        url('images/exhibitions/6.jpg') center/cover no-repeat;
+            color: var(--red-light);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--red);
+            margin: 0;
+            padding: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--red), transparent);
+            opacity: 0.4;
+            z-index: 1;
+        }
+        
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 var(--gutter);
+            margin-top: 0;
+        }
+        
+        .hero .badge {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(255, 0, 0, 0.3);
+            margin-bottom: 20px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .hero-cta {
+            margin-top: 24px;
+            display: inline-flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        /* Typography */
+        h1, .h1 { 
+            font-size: var(--h1);
+            font-weight: 900;
+            color: var(--ink);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        h2, .h2 {
+            font-size: var(--h2);
+            font-weight: 800;
+            color: var(--ink);
+            margin-bottom: 1rem;
+        }
+        
+        h3, .h3 {
+            font-size: var(--h3);
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+        }
+        
+        .lead {
+            font-size: var(--lead);
+            line-height: 1.7;
+            color: var(--muted);
+        }
+        
+        .kicker {
+            display: inline-block;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            color: var(--red);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .underlined {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .underlined::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -6px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--red), transparent);
+        }
+        
+        /* ========= COMPONENTS ========= */
+        .outlined {
+            border: 1px solid var(--red);
+            border-radius: 16px;
+            background: var(--panel);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        }
+        
+        .panel {
+            padding: 24px;
+        }
+        
+        .divider {
+            height: 1px;
+            background: var(--red);
+            margin: 28px 0;
+        }
+        
+        .section {
+            padding: clamp(36px, 5vw, 60px) 0;
+        }
+        
+        .section-header {
+            margin-bottom: 24px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            font-size: 1rem;
+            color: white;
+        }
+        
+        .btn-primary {
+            background: var(--red);
+            color: white;
+            border: 1px solid var(--red);
+        }
+        
+        .btn-primary:hover {
+            background: var(--red-dark);
+            border-color: var(--red-dark);
+        }
+        
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid var(--red);
+            color: var(--red);
+        }
+        
+        .btn-ghost:hover {
+            background: rgba(229, 9, 20, 0.1);
+        }
+        
+        /* ========= GRID LAYOUT ========= */
+        .grid {
+            display: grid;
+            gap: 18px;
+        }
+        
+        .grid-12 {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+            margin-top: 20px;
+        }
+        
+        .span-5 { grid-column: span 5; }
+        .span-6 {
+            grid-column: span 6;
+            padding: 0 15px;
+        }
+        .span-7 { grid-column: span 7; }
+        .span-12 { grid-column: 1 / -1; }
+        
+        @media (max-width: 1200px) {
+            .grid-12 { grid-template-columns: repeat(8, 1fr); }
+            .span-7 { grid-column: span 8; }
+            .span-6 { grid-column: span 8; }
+            .span-5 { grid-column: span 8; }
+        }
+        
+        @media (max-width: 900px) {
+            .grid-12 { 
+                grid-template-columns: 1fr;
+                gap: 32px; /* Increased gap between cards */
+            }
+            .span-7, .span-6, .span-5 { 
+                grid-column: 1 / -1 !important; 
+                margin-bottom: 16px; /* Extra bottom margin for each card */
+            }
+            
+            /* Add more space around cards */
+            .card {
+                margin: 0 8px;
+                padding: 16px;
+            }
+            
+            /* Adjust section spacing on mobile */
+            .section {
+                padding: 40px 0;
+            }
+            
+            /* Make sure images don't overflow */
+            .card-image {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .grid-12 { grid-template-columns: repeat(4, 1fr); }
+            .span-7, .span-6, .span-5 { grid-column: span 4; }
+            
+            :root {
+                --hero-h: 60vh;
+            }
+        }
+        
+        /* ========= CARDS ========= */
+        .card {
+            background: var(--panel);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-title {
+            color: var(--red);
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        
+        .card-text {
+            color: var(--muted);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex-grow: 1;
+            overflow: hidden;
+            display: -webkit-box;
+            
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+            font-size: 0.95rem;
+        }
+        
+        /* Figure with caption */
+        .figure {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 0;
+        }
+        
+        .figure.outlined {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+        
+        .figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .ratio-16x9 {
+            aspect-ratio: 16 / 9;
+        }
+        
+        .ratio-4x3 {
+            aspect-ratio: 4 / 3;
+        }
+        
+        .caption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 16px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+            color: #fff;
+            font-size: 0.95rem;
+        }
+        
+        .caption b {
+            font-weight: 700;
+        }
+        
+        /* Chips */
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        
+        .chip {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 16px;
+            background: rgba(229, 9, 20, 0.15);
+            color: var(--red-light);
+            font-size: 0.85rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            border: 1px solid rgba(229, 9, 20, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2.5rem 0;
+            background-color: var(--black);
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 4rem;
+        }
+        
+        @media (max-width: 768px) {
+            .game-container {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Back Button -->
+    <button onclick="window.history.back()" class="back-button">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        뒤로가기
+    </button>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-inner">
+            <span class="badge" style="color: #ffffff;">국중박 × 오겜</span>
+            <h1 class="h1" style="color: #ffffff;">오징어게임: 전통놀이의 <br>현대적 해석</h1>
+            <p style="color: #f0f0f0;">한국 전통 놀이가 현대 서바이벌 게임으로 재탄생한 순간, 그 이면에 <strong style="color: #00ff00; font-weight: 800; text-shadow: 0 0 10px rgba(0,255,0,0.6);">숨은 문화적 코드</strong>를 발견하세요.</p>
+            <div class="hero-cta">
+                <a href="#games" class="btn btn-primary">게임 보기</a>
+                <a href="#about" class="btn btn-ghost">자세히 알아보기</a>
+            </div>
+        </div>
+    </header>
+        
+        <!-- Intro Section -->
+        <section id="about" class="section intro">
+            <div class="container grid-12">
+                <div class="span-7 outlined panel">
+                    <div class="section-header">
+                        <span class="kicker">소개</span>
+                        <h2 class="h2 underlined">전통놀이의 현대적 변주</h2>
+                    </div>
+                    <p class="lead">
+                        넷플릭스 오리지널 시리즈 '오징어 게임'은 우리의 추억 속 전통 놀이들을 소재로 한 서바이벌 드라마입니다. 
+                        이 작품은 단순한 오락을 넘어 인간 본성과 현대 사회의 문제를 날카롭게 비추고 있습니다. 
+                        특히 드라마 속 게임들은 우리의 <b>전통 민속놀이</b>에서 그 모티프를 가져왔습니다.
+                    </p>
+                    <div class="divider"></div>
+                    <div class="chips">
+                        <span class="chip">#전통놀이</span>
+                        <span class="chip">#서바이벌</span>
+                        <span class="chip">#한국적미학</span>
+                        <span class="chip">#문화콘텐츠</span>
+                    </div>
+                </div>
+                
+                <aside class="span-5 outlined panel">
+                    <div class="section-header">
+                        <h3 class="h3">문화유산으로서의 가치</h3>
+                    </div>
+                    <p class="muted">
+                        오징어게임은 단순한 엔터테인먼트를 넘어 <b>한국적 정서</b>와 <b>전통문화</b>를 
+                        현대적으로 재해석한 사례로 주목받고 있습니다. 
+                        이는 K-콘텐츠의 새로운 가능성을 보여주는 중요한 사례입니다.
+                    </p>
+                </aside>
+            </div>
+        </section>
+        
+        <!-- Games Section -->
+        <section id="games" class="section">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+                    <span class="kicker">게임 소개</span>
+                    <h2 class="h2 underlined">오징어게임 속 전통놀이</h2>
+                    <p class="lead" style="max-width: 700px; margin: 0 auto;">
+                        드라마 속에 등장한 게임들은 단순한 오락을 넘어 한국인의 정서와 문화적 코드가 담겨있습니다.
+                    </p>
+                </div>
+                
+                <div class="grid-12">
+                    <!-- Squid Game Marble Game -->
+                    <div class="span-12">
+                        <h2 class="section-header">
+                            <span class="kicker">Squid Game</span>
+                            오징어게임 속 공기놀이
+                        </h2>
+                    </div>
+                    
+                    <div class="span-12">
+                        <div class="card">
+                            <img src="images/exhibitions/squid-game-marble.jpg" alt="오징어게임 공기놀이 장면" class="card-image">
+                            <div class="card-body">
+                                <h3 class="card-title">목숨을 건 공기놀이</h3>
+                                <p class="card-text">
+                                    오징어게임 4번째 미션. 2인 1조가 되어 진행되는 서바이벌 게임.
+                                    상대방의 구슬 10개를 모두 빼앗는 것이 목표이나, 게임의 진짜 목적은
+                                    인간의 이기심과 신뢰를 시험하는 데에 있습니다.
+                                </p>
+                                <div class="chips">
+                                    <span class="chip">#서바이벌</span>
+                                    <span class="chip">#심리게임</span>
+                                    <span class="chip">#드라마</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Traditional Marble Games Section -->
+                    <div class="span-12" style="margin-top: 60px;">
+                        <h2 class="section-header">
+                            <span class="kicker">전통 놀이</span>
+                            다양한 공기놀이의 세계
+                        </h2>
+                    </div>
+                    
+                    <div class="span-6">
+                        <div class="card">
+                            <img src="images/exhibitions/marble1.jpg" alt="기본 구슬치기" class="card-image">
+                            <div class="card-body">
+                                <h3 class="card-title">공기 놀이 세트</h3>
+                                <p class="card-text">
+                                    1970~1977년에 대한민국에서 제작된 공기 놀이 세트이다. 원형의 공기알과 금속으로 된 공기알 2가지 형태가 있다. 원형의 공기알은 붉은색과 노란색 등 다양한 색을 띠고 있으며, 반원형의 공기알을 붙여 중앙에는 얇은 띠가 있다. 금속으로 만든 공기알은 구름의 모양을 하고 있는데, 얇은 판이 일정 간격을 두고 연결되어 있다. 금속 공기알의 판에는 연결 부위에 4개의 부착 흔적이 있다.
+                                </p>
+                                <div class="chips">
+                                    <span class="chip">#정확성</span>
+                                    <span class="chip">#기본기</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="span-6">
+                        <div class="card">
+                            <img src="images/exhibitions/marble2.jpg" alt="구멍 넣기" class="card-image">
+                            <div class="card-body">
+                                <h3 class="card-title">귀족호두 공기놀이</h3>
+                                <p class="card-text">
+                                    호두의 묘미
+                                    (가로 2.3㎝, 높이 2.4㎝, 두께 2.5㎝)
+                                </p>
+                                <div class="chips">
+                                    <span class="chip">#정교함</span>
+                                    <span class="chip">#집중력</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="span-6">
+                        <div class="card">
+                            <img src="images/exhibitions/marble3.jpg" alt="공기놀이 대회" class="card-image">
+                            <div class="card-body">
+                                <h3 class="card-title">딱지치기,공기놀이</h3>
+                                <p class="card-text">
+                                    어린이들의 민속놀이 모습을 표현한 것이다.
+                                </p>
+                                <div class="chips">
+                                    <span class="chip">#전통계승</span>
+                                    <span class="chip">#대회</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="span-6">
+                        <div class="card">
+                            <img src="images/exhibitions/marble4.jpg" alt="창작 공기놀이" class="card-image">
+                            <div class="card-body">
+                                <h3 class="card-title">공기놀이</h3>
+                                <p class="card-text">
+                                    윤덕희(尹德熙, 1685-1766)는 공재(恭齋) 윤두서(尹斗緖, 1668-1715)의 큰아들로 아버지의 행장(行狀: 죽은 이의 행실을 기록한 것)을 썼고 윤두서 화첩인 《해남윤씨가전고화첩(海南尹氏家傳古?帖)》을 정리하였다.버드나무가 드리워진 언덕에서 공기놀이를 하는 두 소년과 바람개비를 들고 있는 소년을 그린 소품이다. 아이들의 시선은 허공에 던져진 두 개의 공깃돌에 모아져 있으며 자세와 표정, 옷차림 묘사는 능숙한 필치로 자연스럽게 이루어졌다. 주위의 바위와 수풀도 깔끔하게 처리되어 품격을 갖추었으나 풍속화다운 현장감은 떨어진다. 아이들의 놀이 장면은 영희도류(瓔?圖類)의 전통적인 소재로 그려졌는데, 이 작품도 여기에 속한다고 볼 수 있다.
+                                </p>
+                                <div class="chips">
+                                    <span class="chip">#창의성</span>
+                                    <span class="chip">#현대화</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Content -->
+                <div class="grid-12" style="margin-top: 40px;">
+                    <div class="span-12">
+                        <div class="outlined" style="padding: 24px; text-align: center;">
+                            <h3 class="h3" style="margin-bottom: 16px;">더 많은 게임이 기다리고 있습니다</h3>
+                            <p style="max-width: 700px; margin: 0 auto 20px; color: var(--muted);">
+                                오징어게임에는 다양한 전통놀이가 현대적으로 재해석되어 등장합니다. 
+                                각 게임은 단순한 승부를 넘어 인간 본성과 사회적 메시지를 담고 있습니다.
+                            </p>
+                            <a href="#" class="btn btn-ghost">모든 게임 보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container" style="text-align:center;">
+            <p style="margin-top: 8px;">
+                <strong style="color: var(--demon-red); font-weight: 700;">&copy;Caps Lock</strong> 
+                <span style="color: var(--muted);">임선우 / 권법진 / 김종현</span>
+            </p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

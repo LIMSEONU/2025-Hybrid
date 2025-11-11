@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="K-Culture 특별전시 - 한국 전통문화와 현대 한류의 만남">
+    <meta name="keywords" content="K-Culture, 한류, 특별전시, 국립중앙박물관, 한국문화">
+    <meta name="author" content="Caps Lock 임선우/권법진/김종현">
+    
+    <title>K-Culture 특별전시 - 국립중앙박물관</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        /* K-Culture 전용 스타일 */
+        .k-culture-hero {
+            min-height: 60vh;
+            background: linear-gradient(135deg, #2c1810 0%, #8b4513 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .k-culture-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('images/exhibitions/3.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .k-culture-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 40px 20px;
+        }
+
+        .k-culture-hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+            letter-spacing: 0.1em;
+        }
+
+        .k-culture-hero p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-button:hover {
+            background: var(--accent-red);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .k-section {
+            padding: 80px 20px;
+        }
+
+        .k-section:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .k-content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+
+        .k-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .k-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .k-card h3 {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+
+        .k-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .k-highlight {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .k-highlight h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .k-highlight p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Feature Cards (Large) */
+        .k-feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+
+        .k-feature-card {
+            display: block;
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            text-decoration: none;
+        }
+
+        .k-feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 36px rgba(0,0,0,0.16);
+        }
+
+        .k-feature-thumb {
+            height: 260px;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .k-feature-thumb img {
+            width: 100%;
+            height: 110%;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+            background: transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 케데헌 카드: 이미지 기반 블러 배경 */
+        .thumb-kedeheon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: center/cover no-repeat url('images/exhibitions/5.png');
+            filter: blur(20px);
+            transform: scale(1.1);
+            opacity: 0.9;
+            z-index: 0;
+        }
+
+        .k-feature-body {
+            padding: 22px 22px 26px;
+            text-align: center;
+        }
+
+        .k-feature-title {
+            margin: 0;
+            font-size: 1.35rem;
+            color: var(--primary-dark);
+        }
+
+        /* Custom color accents per item */
+        .thumb-bts { background: linear-gradient(135deg, #4c1d95, #7c3aed); }
+        .thumb-kedeheon { background: linear-gradient(135deg, #1a0a0f, #6b1a44); }
+        .thumb-squid { background: #000; }
+
+        @media (max-width: 768px) {
+            .k-culture-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .k-culture-hero p {
+                font-size: 1.1rem;
+            }
+
+            .back-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">← 메인으로</a>
+
+    <!-- 히어로 섹션 -->
+    <section class="k-culture-hero">
+        <div class="k-culture-hero-content">
+            <span style="display: inline-block; background: rgba(255, 215, 0, 0.9); color: #2c1810; padding: 8px 20px; border-radius: 20px; font-size: 0.9rem; font-weight: 700; margin-bottom: 20px;">
+                💎 온라인 전용 특별 전시
+            </span>
+            <h1>K-Culture</h1>
+            <p>
+                한국 전통문화의 아름다움과 현대적 재해석을 통해<br>
+                세계로 뻗어나가는 K-컬쳐의 진수를 만나보세요
+            </p>
+            <p style="margin-top: 20px; font-size: 1rem; opacity: 0.9;">
+                ※ 본 전시는 웹사이트에서만 감상하실 수 있는 <br>디지털 큐레이션입니다
+            </p>
+        </div>
+    </section>
+
+    <!-- 전시 개요 -->
+    <section class="k-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">전시 개요</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div style="max-width: 900px; margin: 40px auto;">
+                <div style="background: linear-gradient(135deg, #fff8e1 0%, #ffe0b2 100%); padding: 30px; border-radius: 15px; border-left: 5px solid var(--accent-gold); margin-bottom: 30px;">
+                    <h3 style="color: var(--accent-gold); font-size: 1.3rem; margin-bottom: 15px;">
+                        💻 디지털 온라인 전시관
+                    </h3>
+                    <p style="font-size: 1rem; line-height: 1.8; color: #5d4037;">
+                        이 전시는 Caps Lock 조에게서만 만나볼 수 있는 특별 기획 콘텐츠입니다.<br>
+                        물리적 공간의 제약 없이, 언제 어디서나 자유롭게 한국 문화의 과거와 현재를 탐험하실 수 있습니다.
+                    </p>
+                </div>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); text-align: center;">
+                    K-Culture 특별전시는 한국의 전통문화가 어떻게 현대 한류로 발전했는지를 보여주는 특별한 여정입니다.
+                    <br>5천 년 역사의 뿌리에서 시작해 오늘날 전 세계를 사로잡은 K-Pop, K-Drama, K-Beauty까지,
+                    과거와 미래가 공존하는 문화 공간을 경험하실 수 있습니다.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 전시 구성 -->
+    <section class="k-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">전시 구성</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="k-content-grid">
+                <div class="k-card">
+                    <h3>🎭 전통의 뿌리</h3>
+                    <p>
+                        한복, 전통 음악, 춤, 그림 등 한국 고유의 문화유산을 통해
+                        현대 K-Culture의 기원을 탐구합니다.
+                    </p>
+                </div>
+                <div class="k-card">
+                    <h3>🎬 현대의 물결</h3>
+                    <p>
+                        K-Pop, K-Drama를 중심으로 한 한류의 세계적 확산과
+                        그 안에 담긴 한국 문화의 정체성을 조명합니다.
+                    </p>
+                </div>
+                <div class="k-card">
+                    <h3>🌏 세계와의 만남</h3>
+                    <p>
+                        전통과 현대가 융합된 한국 문화가 세계 각지에서
+                        어떻게 받아들여지고 재해석되는지 보여줍니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 대표 카드 섹션 -->
+    <section class="k-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">대표 콘텐츠</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="k-feature-grid">
+                <a class="k-feature-card" href="bts.html">
+                    <div class="k-feature-thumb thumb-bts"><img src="images/exhibitions/4.png" alt="BTS"></div>
+                    <div class="k-feature-body">
+                        <h3 class="k-feature-title">BTS</h3>
+                    </div>
+                </a>
+
+                <a class="k-feature-card" href="kpopdemon.html">
+                    <div class="k-feature-thumb thumb-kedeheon"><img src="images/exhibitions/5.png" alt="K-pop Demon Hunters"></div>
+                    <div class="k-feature-body">
+                        <h3 class="k-feature-title">K-pop Demon Hunters</h3>
+                    </div>
+                </a>
+
+                <a class="k-feature-card" href="ojingeo.html">
+                    <div class="k-feature-thumb thumb-squid"><img src="images/exhibitions/6.jpg" alt="오징어 게임"></div>
+                    <div class="k-feature-body">
+                        <h3 class="k-feature-title">오징어 게임</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 관람 안내 -->
+    <section class="k-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">관람 안내</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div style="max-width: 800px; margin: 40px auto;">
+                <div class="k-card" style="background: linear-gradient(135deg, #fff8e1 0%, #ffe0b2 100%); border: 2px solid var(--accent-gold);">
+                    <h3>🌐 온라인 전용 전시</h3>
+                    <p>
+                        <strong>본 전시는 박물관 현장에서는 진행되지 않습니다.</strong><br>
+                        Caps Lock 홈피를 통해서만 관람 가능한 디지털 특별 기획입니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">국립중앙박물관</h3>
+                    <p class="footer-text">
+                        서울특별시 용산구 서빙고로 137<br>
+                        TEL: 02-2077-9000<br>
+                        E-mail: info@museum.go.kr
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">빠른 링크</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">메인 홈페이지</a></li>
+                        <li><a href="index.html#exhibitions">전시 안내</a></li>
+                        <li><a href="index.html#visit-info">관람 정보</a></li>
+                        <li><a href="index.html#location">오시는 길</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+
+                <p style="margin-top: 8px;">
+                    <strong style="color: #5f2c82; font-weight: 700;">&copy; Caps Lock</strong> 
+                    <span style="color: #6b7280;">임선우 / 권법진 / 김종현</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
