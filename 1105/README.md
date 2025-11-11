@@ -9,7 +9,7 @@
 
 **만 명 이상에게 한국의 문화유산을 소개하기 위한 반응형 웹사이트**
 
-[🌐 라이브 데모](https://limseonu.github.io/2025-Hybrid/1105/index.html) | [📖 제작 가이드](./GUIDE.md)
+[🌐 라이브 데모](https://limseonu.github.io/2025-Hybrid/1105/index.html) | [📌 CAPS LOCK 제작 과정](./PRODUCE.md) <br> [📖 중학생을 위한 제작 가이드](./GUIDE.md) | [🎯 깃허브 호스팅 가이드](./HOSTING.md)
 
 </div>
 
