@@ -1,1 +1,637 @@
+# 🏛️ 국립중앙박물관 웹사이트 프로젝트
+
+<div align="center">
+
+![국립중앙박물관](https://img.shields.io/badge/국립중앙박물관-웹사이트-gold?style=for-the-badge)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+
+**만 명 이상에게 한국의 문화유산을 소개하기 위한 반응형 웹사이트**
+
+[🌐 라이브 데모](https://limseonu.github.io/2025-Hybrid/1105/index.html) | [📖 제작 가이드](./GUIDE.md)
+
+</div>
+
+---
+
+## 📑 목차
+
+- [프로젝트 소개](#-프로젝트-소개)
+- [주요 기능](#-주요-기능)
+- [기술 스택](#️-기술-스택)
+- [팀원 소개 및 역할](#-팀원-소개-및-역할)
+- [개발 환경](#-개발-환경)
+- [프로젝트 통계](#-프로젝트-통계)
+- [라이센스](#-라이센스)
+
+---
+
+## 🎯 프로젝트 소개
+
+### 📌 프로젝트 배경
+
+> **"만 명 이상의 사람들에게 국립중앙박물관을 소개하고 싶었습니다!"**
+
+국립중앙박물관은 33만 점 이상의 소장품을 보유한 한국 최대 규모의 박물관입니다. 하지만 많은 사람들이 박물관에 대한 정보를 얻기 어려워합니다. 
+
+이 프로젝트는:
+- 📱 **접근성**: 언제 어디서나 박물관 정보 확인
+- 🎨 **현대적 디자인**: 모던하고 직관적인 UI/UX
+- 🌍 **문화 확산**: 한국 문화유산의 가치를 널리 알림
+- 📚 **교육**: 학생들도 쉽게 따라 만들 수 있는 교육 자료
+
+### 🎨 프로젝트 목표
+
+1. **사용자 경험 최적화**
+   - 반응형 디자인으로 모든 기기에서 완벽한 경험 제공
+   - 직관적인 네비게이션과 인터랙션
+
+2. **정보 접근성 향상**
+   - 실시간 운영 시간 표시
+   - 층별 상세 안내로 방문 계획 수립 용이
+
+3. **문화 콘텐츠 확장**
+   - K-Culture 특별 전시로 전통과 현대의 연결
+   - BTS, 오징어 게임 등 한류 콘텐츠 소개
+
+4. **교육 목적**
+   - 중학생도 따라할 수 있는 완벽한 가이드 제공
+   - AI 도구 활용법 공유
+
+### 💡 프로젝트 특징
+
+- ✅ **API 없이 구현**: 외부 API 의존 없이 순수 HTML/CSS/JS로 개발
+- ✅ **빠른 개발**: 1주일 만에 완성 (11/08 ~ 11/11)
+- ✅ **AI 활용**: Claude AI, Cursor, ChatGPT를 활용한 효율적 개발
+- ✅ **교육 중심**: 학생들이 쉽게 따라할 수 있도록 상세한 문서화
+
+---
+
+## ✨ 주요 기능
+
+### 🏠 메인 페이지 (index.html)
+
+#### 1. **히어로 섹션**
+```
+✓ YouTube 영상 자동재생 (국립중앙박물관 홍보 영상)
+✓ 그라데이션 배경 애니메이션
+✓ 반응형 레이아웃 (모바일에서 영상 숨김)
+✓ CTA 버튼 (더 알아보기)
+```
+
+#### 2. **박물관 소개**
+```
+✓ 비전 및 미션 소개
+✓ 주요 특징 3가지
+  - 33만 점 이상 소장품
+  - 무료 관람 (상설전시)
+  - 연중무휴 운영
+✓ 애니메이션 효과
+```
+
+#### 3. **관람 정보**
+```
+✓ 실시간 운영 시간 표시
+  - 평일: 10:00~18:00
+  - 수/토: 10:00~21:00
+  - 월요일 휴관
+✓ 입장료, 주차, 편의시설 정보
+✓ 4개 정보 카드 (그리드 레이아웃)
+```
+
+#### 4. **전시 안내**
+```
+✓ 3개 상설전시
+  - 역사의 길 (선사~조선시대)
+  - 문화의 빛 (회화, 서예, 도자기)
+  - 예술의 혼 (불교미술, 금속공예)
+✓ 토글 가능한 상세 설명
+✓ 각 전시별 고유 색상 테마
+```
+
+#### 5. **문화행사**
+```
+✓ 큐레이터와의 대화
+✓ 어린이 체험 프로그램
+✓ 야간 음악회
+✓ 날짜, 장소, 시간 정보
+```
+
+#### 6. **컬렉션 검색**
+```
+✓ 카테고리 필터 (전체/도자기/회화/불상/금속공예)
+✓ 실시간 검색 기능
+✓ 6개 대표 소장품 전시
+✓ Lazy Loading 이미지 최적화
+```
+
+#### 7. **시설 소개**
+```
+✓ 배치 현황: 건물 전체 배치도
+✓ 층별 상세: B1~6F 탭 네비게이션
+✓ 시설 개요: 이미지 확대 모달
+```
+
+#### 8. **연혁**
+```
+✓ 타임라인 디자인
+✓ 9개 주요 사건
+✓ 반응형 레이아웃
+```
+
+#### 9. **오시는 길**
+```
+✓ Google Maps 임베드
+✓ 대중교통 안내 (지하철/버스)
+✓ 주소 및 연락처
+```
+
+---
+
+### 🎭 K-Culture 특별전시 (K-Culture.html)
+
+```
+📌 온라인 전용 전시관
+✓ 전통과 현대 한류의 융합
+✓ 갈색 톤의 고급스러운 디자인
+
+🎤 BTS (bts.html)
+  - K-Pop의 상징
+  - 보라색 테마
+  
+🎮 K-pop Demon Hunters (kpopdemon.html)
+  - 웹툰과 K-pop의 결합
+  - 다크 테마
+  
+🎬 오징어 게임 (ojingeo.html)
+  - K-Drama의 세계적 성공
+  - 블랙 테마
+```
+
+---
+
+### 📱 반응형 디자인
+
+| 화면 크기 | 레이아웃 | 특징 |
+|-----------|----------|------|
+| **데스크톱** (1200px+) | 풀 레이아웃 | 모든 기능 표시 |
+| **태블릿** (768~1199px) | 2단 그리드 | 최적화된 간격 |
+| **모바일** (767px 이하) | 1단 레이아웃 | 햄버거 메뉴 |
+
+### 🎨 사용자 경험 (UX) 기능
+
+1. **Splash Screen**
+   - 로딩 시 브랜드 소개 (0.8초)
+   - 부드러운 페이드아웃
+
+2. **Smooth Scroll**
+   - 부드러운 페이지 이동
+   - 메뉴 클릭 시 자동 스크롤
+
+3. **Image Zoom Modal**
+   - 이미지 클릭 시 확대 보기
+   - ESC 키로 닫기
+   - 배경 클릭으로 닫기
+
+4. **Lazy Loading**
+   - 이미지 지연 로딩
+   - 성능 최적화 (Intersection Observer)
+
+5. **Throttled Scroll**
+   - 스크롤 이벤트 최적화 (100ms)
+   - 성능 개선
+
+6. **Interactive Elements**
+   - 호버 효과 (카드 상승, 색상 변경)
+   - 클릭 애니메이션
+   - 부드러운 트랜지션
+
+---
+
+## 🛠️ 기술 스택
+
+### Frontend
+
+| 기술 | 버전 | 용도 |
+|------|------|------|
+| **HTML5** | - | 시맨틱 마크업, SEO 최적화 |
+| **CSS3** | - | 그리드/플렉스박스, 애니메이션 |
+| **JavaScript** | ES6+ | DOM 조작, 이벤트 처리 |
+
+### 디자인 시스템
+
+```css
+/* Color Palette */
+:root {
+    --primary-dark: #1a1a1a;        /* 메인 텍스트 */
+    --primary-light: #f5f5f5;       /* 배경 */
+    --accent-gold: #d4af37;         /* 강조 (금색) */
+    --accent-red: #c60c30;          /* 보조 강조 */
+    --text-primary: #333333;        /* 본문 */
+    --text-secondary: #666666;      /* 보조 텍스트 */
+    
+    /* Shadows */
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.15);
+    
+    /* Border Radius */
+    --radius: 16px;
+    --radius-small: 12px;
+}
+```
+
+### 타이포그래피
+
+```css
+/* Font System */
+font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+/* Scale */
+h1: 3.5rem / 2.5rem (mobile)
+h2: 2.5rem / 2rem (mobile)
+h3: 1.5rem
+p: 1rem
+```
+
+### 외부 리소스
+
+- **YouTube Embed API**: 히어로 영상
+- **Google Maps Embed API**: 위치 안내
+- **Google Fonts**: Noto Sans KR
+
+---
+
+## 👥 팀원 소개 및 역할
+
+### 🎯 Caps Lock 팀
+
+<table>
+<tr>
+<td align="center" width="33%">
+
+### 👨‍💻 임선우
+
+**역할**: 문서화 & 서브 개발
+
+**담당**:
+- 📄 README.md 작성 및 문서화
+- 📊 PPT 제작 및 발표 자료
+- 📝 프로젝트 정리 및 마무리
+- 💡 콘텐츠 기획 참여
+- 💻 K-Culture.html 개발
+- 💻 kpopdemon.html 개발
+
+**기여도**: 33%
+
+</td>
+<td align="center" width="34%">
+
+### 👨‍💻 권법진
+
+**역할**: 메인 개발 & 풀스택
+
+**담당**:
+- 🎨 전체 CSS 스타일 시스템 (2,875줄)
+- ⚙️ JavaScript 기능 개발 (627줄)
+- 💻 index.html (메인 페이지)
+- 💻 bts.html 개발
+- 💻 ojingeo.html 개발
+- 📱 반응형 디자인 구현
+- 🎬 애니메이션 및 인터랙션
+
+**기여도**: 34%
+
+</td>
+<td align="center" width="33%">
+
+### 👨‍💻 김종현
+
+**역할**: 기획 & 프로젝트 관리
+
+**담당**:
+- 💡 콘텐츠 기획 및 아이디어 제안
+- 💬 회의록 작성 및 회의 주도
+- 📂 GitHub 저장소 관리
+- 🔍 최종 점검 및 테스트
+- 📋 프로젝트 마무리 정리
+- 🤝 팀 커뮤니케이션 관리
+
+**기여도**: 33%
+
+</td>
+</tr>
+</table>
+
+### 🤝 협업 방식
+
+```
+역할 분담
+├── 임선우 (33%)
+│   ├── 문서 작성
+│   ├── PPT 제작
+│   ├── 프로젝트 정리
+│   ├── K-Culture 페이지
+│   └── 서브 페이지 개발
+│
+├── 권법진 (34%)
+│   ├── 메인 개발
+│   ├── CSS/JS 전체
+│   ├── index.html
+│   ├── BTS 페이지
+│   ├── 오징어 게임 페이지
+│   └── 반응형 구현
+│
+└── 김종현 (33%)
+    ├── 콘텐츠 기획
+    ├── 아이디어 제안
+    ├── 회의록 작성
+    ├── GitHub 관리
+    ├── 테스트 및 점검
+    └── 마무리 정리
+```
+
+**협업 특징**:
+- 각자 역할에 집중하되, 지속적으로 피드백 교환
+- 코드 리뷰 및 상호 검증
+- 1주일의 집중 개발 (11/08 ~ 11/11)
+- 효율적인 역할 분담으로 빠른 개발 완료
+
+---
+
+## 💻 개발 환경
+
+### 사용 도구
+
+#### 🤖 AI 도구
+```
+Claude AI     - 코드 생성 및 문제 해결
+Cursor        - AI 기반 코드 에디터
+ChatGPT       - 아이디어 및 디버깅
+```
+
+#### 💻 개발 도구
+```
+Visual Studio Code  - 메인 코드 에디터
+Android Studio      - 앱 변환 테스트
+Cordova             - 하이브리드 앱 개발
+```
+
+#### 🔧 협업 도구
+```
+Discord       - 실시간 소통 및 화면 공유
+KakaoTalk     - 빠른 의사결정
+GitHub        - 버전 관리 및 배포
+```
+
+### 개발 환경 설정
+
+```bash
+# 필요한 도구
+- VS Code (또는 원하는 에디터)
+- Git
+- GitHub 계정
+- 웹 브라우저 (Chrome 권장)
+
+# 선택 사항 (앱 개발 시)
+- Android Studio
+- Node.js
+- Cordova CLI
+```
+
+---
+
+## 📊 프로젝트 통계
+
+### 📁 파일 구성
+
+```
+총 파일 수: 30+ 개
+HTML 파일: 5개
+CSS 파일: 1개 (2,875줄)
+JS 파일: 1개 (627줄)
+이미지: 20+ 개
+```
+
+### 📈 코드 통계
+
+| 항목 | 수량 |
+|------|------|
+| HTML 라인 | ~1,600줄 |
+| CSS 라인 | 2,875줄 |
+| JavaScript 라인 | 627줄 |
+| **총 코드** | **~5,100줄** |
+
+### ⏱️ 개발 기간
+
+```
+총 개발 기간: 4일 (11/08 ~ 11/11)
+
+11/08 (Day 1) - 프로젝트 기획 및 구조 설계
+11/09 (Day 2) - 메인 페이지 개발
+11/10 (Day 3) - 서브 페이지 및 기능 추가
+11/11 (Day 4) - 테스트, README, PPT 제작
+```
+
+### 🎯 목표
+
+- ✅ **방문자 목표**: 10,000명 이상
+- ✅ **페이지 로딩**: 3초 이내
+- ✅ **모바일 최적화**: 100% 반응형
+- ✅ **접근성**: WCAG 2.1 AA 준수
+- ✅ **SEO**: Google PageSpeed 80점 이상
+
+---
+
+## 🎨 디자인 철학
+
+### 색상 선택 이유
+
+```
+금색 (#d4af37)
+→ 전통적이고 고급스러운 느낌
+→ 문화재의 가치를 상징
+
+빨간색 (#c60c30)
+→ 한국의 전통 색상
+→ 강렬하고 인상적인 포인트
+
+다크 그레이 (#1a1a1a)
+→ 현대적이고 세련된 느낌
+→ 콘텐츠에 집중할 수 있는 배경
+```
+
+### UI/UX 원칙
+
+1. **단순함 (Simplicity)**
+   - 불필요한 요소 제거
+   - 직관적인 네비게이션
+
+2. **일관성 (Consistency)**
+   - 통일된 디자인 시스템
+   - 예측 가능한 인터랙션
+
+3. **접근성 (Accessibility)**
+   - 시맨틱 HTML
+   - ARIA 속성
+   - 키보드 네비게이션
+
+4. **성능 (Performance)**
+   - Lazy Loading
+   - 이벤트 최적화
+   - 이미지 최적화
+
+---
+
+## 🌟 주요 성과
+
+### ✅ 기술적 성과
+
+- **API 없이 완전 독립 구현**
+  - 외부 의존성 최소화
+  - 빠른 로딩 속도
+  - 안정적인 서비스
+
+- **AI 도구 활용한 빠른 개발**
+  - 1주일 만에 완성
+  - 높은 코드 품질
+  - 효율적인 개발 프로세스
+
+- **완벽한 반응형 디자인**
+  - 모든 기기에서 최적화
+  - 부드러운 사용자 경험
+
+### ✅ 교육적 성과
+
+- **상세한 문서화**
+  - 중학생도 따라할 수 있는 가이드
+  - 30개 이상의 AI 프롬프트 제공
+  - 단계별 튜토리얼
+
+- **오픈소스 공유**
+  - GitHub에 전체 코드 공개
+  - MIT 라이센스로 자유 사용 가능
+
+---
+
+## 🚀 빠른 시작
+
+### 로컬에서 실행
+
+```bash
+# 1. 저장소 클론
+git clone https://github.com/limseonu/2025-Hybrid.git
+
+# 2. 프로젝트 폴더로 이동
+cd 2025-Hybrid/1105
+
+# 3. index.html 파일을 브라우저에서 열기
+# (더블클릭 또는 우클릭 > 연결 프로그램 > 웹 브라우저)
+```
+
+### GitHub Pages로 배포
+
+```bash
+# 1. GitHub에 저장소 생성
+# 2. Settings > Pages에서 활성화
+# 3. 2~3분 후 자동 배포 완료
+```
+
+자세한 내용은 [제작 가이드](./GUIDE.md)를 참고하세요.
+
+---
+
+## 📱 브라우저 호환성
+
+| 브라우저 | 버전 | 지원 여부 |
+|----------|------|-----------|
+| Chrome | 90+ | ✅ 완벽 지원 |
+| Firefox | 88+ | ✅ 완벽 지원 |
+| Safari | 14+ | ✅ 완벽 지원 |
+| Edge | 90+ | ✅ 완벽 지원 |
+| IE | 11 | ⚠️ 부분 지원 |
+
+---
+
+## 📞 연락처
+
+### Caps Lock 팀
+
+**GitHub**: [limseonu/2025-Hybrid](https://github.com/limseonu/2025-Hybrid)
+
+**라이브 사이트**: [https://limseonu.github.io/2025-Hybrid/1105/index.html](https://limseonu.github.io/2025-Hybrid/1105/index.html)
+
+**팀원**:
+- 임선우 (콘텐츠 기획 & 개발)
+- 권법진 (메인 개발 & 디자인)
+
+---
+
+## 📄 라이센스
+
+이 프로젝트는 **MIT 라이센스** 하에 배포됩니다.
+
+```
+MIT License
+
+Copyright (c) 2024 Caps Lock Team (임선우, 권법진, 김종현)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+```
+
+### 이 라이센스의 의미:
+- ✅ 자유롭게 사용 가능
+- ✅ 수정 및 배포 가능
+- ✅ 상업적 사용 가능
+- ⚠️ 저작권 표시 필수
+- ⚠️ 무보증
+
+---
+
+## 🎓 참고 자료
+
+### 공식 문서
+- [MDN Web Docs](https://developer.mozilla.org/) - HTML, CSS, JS 레퍼런스
+- [W3Schools](https://www.w3schools.com/) - 초보자 친화적 튜토리얼
+
+### AI 도구
+- [Claude AI](https://claude.ai/) - Anthropic의 AI 어시스턴트
+- [ChatGPT](https://chat.openai.com/) - OpenAI의 AI 챗봇
+- [Cursor](https://cursor.sh/) - AI 기반 코드 에디터
+
+---
+
+## 🎉 감사의 말
+
+### 영감을 준 곳
+- **국립중앙박물관**: 아름다운 문화유산과 디자인
+- **한국 문화**: 전통과 현대가 공존하는 문화
+- **오픈소스 커뮤니티**: 무료로 공유되는 지식
+
+### 사용한 도구
+- **Claude AI / ChatGPT**: 코드 생성 및 문제 해결
+- **Visual Studio Code**: 메인 에디터
+- **GitHub**: 버전 관리 및 호스팅
+- **Discord / KakaoTalk**: 팀 커뮤니케이션
+
+---
+
+<div align="center">
+
+**Made with ❤️ by Caps Lock Team**
+
+임선우 · 권법진 · 김종현
+
+[⬆ 맨 위로 가기](#-국립중앙박물관-웹사이트-프로젝트)
+
+</div>
 
