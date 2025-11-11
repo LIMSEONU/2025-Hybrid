@@ -1,3 +1,7 @@
+
+[🏠 메인 README로 돌아가기](./README.md) | [🌐 라이브 데모](https://limseonu.github.io/2025-Hybrid/1105/index.html)
+---
+
 # 🌐 GitHub Pages 호스팅 가이드
 
 <div align="center">
