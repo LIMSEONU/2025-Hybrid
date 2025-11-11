@@ -5,7 +5,7 @@
 
 **중학생도 5분 만에 웹사이트를 인터넷에 올리는 방법**
 
-무료로 웹사이트를 전 세계에 공개하세요!
+무료로 웹사이트를 전 세계에 공개하세요! <br>
 [🏠 메인 README로 돌아가기](./README.md) | [🌐 라이브 데모](https://limseonu.github.io/2025-Hybrid/1105/index.html)
 
 </div>
