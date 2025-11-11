@@ -81,8 +81,6 @@ museum/
 2. 설치 프로그램 실행
 3. GitHub 계정으로 로그인
 
-![GitHub Desktop](https://desktop.github.com/images/github-desktop-screenshot-windows.png)
-
 ---
 
 ### STEP 2: 새 저장소 만들기
@@ -100,8 +98,6 @@ museum/
 
 4. **Create Repository** 클릭
 
-![New Repository](https://docs.github.com/assets/cb-31554/images/help/desktop/create-new-repository.png)
-
 ---
 
 ### STEP 3: 프로젝트 파일 추가
@@ -117,8 +113,6 @@ museum/
    ```
 
 4. **Commit to main** 버튼 클릭
-
-![Commit Changes](https://docs.github.com/assets/cb-43001/images/help/desktop/commit-message.png)
 
 ---
 
@@ -828,7 +822,5 @@ private/
 **Made with ❤️ by Caps Lock Team**
 
 임선우 · 권법진 · 김종현
-
-[⬆ 맨 위로 가기](#-github-pages-호스팅-가이드)
 
 </div>
