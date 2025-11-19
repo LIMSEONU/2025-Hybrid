@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src * data: gap: content: https: http: 'unsafe-inline' 'unsafe-eval' ws: wss:;">
+    
+    <title>맛집 검색 사이트</title>
+    <script type="module" crossorigin src="./assets/index-B4Azm6rr.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-B7hl_vJN.css">
+  </head>
+
+  <body>
+    <div id="root"></div>
+    
+    <script src="cordova.js"></script>
+    
+    <!-- Kakao SDK를 autoload=false로 로드 -->
+    <script>
+      document.addEventListener('deviceready', function() {
+        console.log('✅ Cordova 준비 완료');
+        
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.charset = 'utf-8';
+        // autoload=false 추가!
+        script.src = 'https://dapi.kakao.com/v2/maps/sdk.js?appkey=90392116c8307dcd11e51cdc92f9627b&autoload=false';
+        
+        script.onload = function() {
+          console.log('✅ Kakao Maps SDK 스크립트 로드 완료!');
+          
+          // 명시적으로 load() 호출
+          if (window.kakao && window.kakao.maps) {
+            window.kakao.maps.load(function() {
+              console.log('✅ Kakao Maps 초기화 완료!');
+              window.kakaoMapsReady = true;
+            });
+          }
+        };
+        
+        script.onerror = function(e) {
+          console.error('❌ Kakao Maps SDK 로드 실패:', e);
+        };
+        
+        document.head.appendChild(script);
+      }, false);
+      
+      // 웹 환경
+      if (!window.cordova) {
+        console.log('웹 환경 감지');
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://dapi.kakao.com/v2/maps/sdk.js?appkey=90392116c8307dcd11e51cdc92f9627b&autoload=false';
+        script.onload = function() {
+          if (window.kakao && window.kakao.maps) {
+            window.kakao.maps.load(function() {
+              console.log('✅ Kakao Maps 초기화 완료 (웹)!');
+              window.kakaoMapsReady = true;
+            });
+          }
+        };
+        document.head.appendChild(script);
+      }
+    </script>
+    
+  </body>
+</html>
