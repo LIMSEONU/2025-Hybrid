@@ -20,7 +20,7 @@
 ├── 📁 251001/          # Week 5 - Bootstrap 5 & Google Material Design 적용
 ├── 📁 251015/          # Week 6 - Apache Cordova 하이브리드 앱 개발 환경 구축
 ├── 📁 251105/          # Week 8 - 국립중앙박물관 웹앱 팀 프로젝트
-├──
+├── 📁 251112/          # Week 9 - FOODMAP(사용자 위치기반 맛집앱) 웹앱 팀 프로젝트
 ├──
 └──
 ```
@@ -90,7 +90,7 @@
   - 하이브리드 앱 빌드 및 에뮬레이터 실행
   - 크로스 플랫폼 모바일 앱 개발 기초
  
-### 📅 251105 - HTML5/CSS3 팀 프로젝트
+### 📅 251105 - CAPS LOCK 팀 프로젝트
 
 #### **팀별 포트폴리오 웹사이트** 🌐 [Live Demo](https://limseonu.github.io/2025-Hybrid/1105/index.html)
 - **🎯 목적**: 국립중앙박물관, K-컬처를 알리기 위한 전문적인 포트폴리오 웹앱사이트
@@ -98,6 +98,21 @@
   - HTML5 (시맨틱 태그 활용)
   - CSS3 (Grid, Flexbox, CSS Variables)
   - JavaScript (DOM 조작, 이벤트 처리)
+  - 반응형 웹 디자인
+
+---
+
+### 📅 251112 - CAPS LOCK 팀 프로젝트
+
+#### **FoodMap - 가을 맛집 여행 가이드** 🌐 [Live Demo](https://limseonu.github.io/2025-Hybrid/1112/)
+- **🎯 목적**: 위치 기반 맛집 검색 및 경로 최적화 웹 애플리케이션
+- **💻 기술 스택**: 
+  - React 18.3.1 (함수형 컴포넌트, Hooks)
+  - TypeScript (정적 타입 시스템)
+  - Tailwind CSS (유틸리티 기반 스타일링)
+  - Vite 6.3.5 (빌드 도구 및 개발 서버)
+  - Radix UI (접근성 UI 컴포넌트)
+  - Kakao Map API (지도 및 위치 서비스)
   - 반응형 웹 디자인
 
 ---
