@@ -31,7 +31,7 @@
 
 ### 📅 250910 - HTML5/CSS3 기초 프로젝트
 
-#### 1. **개인 포트폴리오 웹사이트** (`myselfpage/`) 🌐 [Live Demo](https://limseonu.github.io/2025-Hybrid/0910/myselfpage/index.html)
+#### **개인 포트폴리오 웹사이트** (`myselfpage/`) 🌐 [Live Demo](https://limseonu.github.io/2025-Hybrid/0910/myselfpage/index.html)
 - **🎯 목적**: 개인 브랜딩을 위한 전문적인 포트폴리오 웹사이트
 - **💻 기술 스택**: 
   - HTML5 (시맨틱 태그 활용)
