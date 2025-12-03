@@ -18,10 +18,11 @@
 ├── 📁 250917/          # Week 3 - 포트폴리오 & jQuery Mobile
 ├── 📁 250924/          # Week 4 - API 연동 & 인터랙티브 웹
 ├── 📁 251001/          # Week 5 - Bootstrap 5 & Google Material Design 적용
-├── 📁 251015/          # Week 6 - Apache Cordova 하이브리드 앱 개발 환경 구축
-├── 📁 251105/          # Week 8 - 국립중앙박물관 웹앱 팀 프로젝트
-├── 📁 251112/          # Week 9 - FOODMAP(사용자 위치기반 맛집앱) 웹앱 팀 프로젝트
-├──
+├── 📁 251015/          # Week 7 - Apache Cordova 하이브리드 앱 개발 환경 구축
+├── 📁 251105/          # Week 10 - 국립중앙박물관 웹앱 팀 프로젝트
+├── 📁 251112/          # Week 11 - FOODMAP(사용자 위치기반 맛집앱) 웹앱 팀 프로젝트
+├── 📁 251119/          # Week 12 - QR과 PWA를 이용한 1회용 웹앱 팀 프로젝트
+├── 📁 251126/          # Week 13 - Figma와 Flow를 이용한 AI 기반 웹앱 팀 프로젝트
 └──
 ```
 
@@ -116,6 +117,49 @@
   - 반응형 웹 디자인
 
 ---
+
+### 📅 251119 - CAPS LOCK 팀 프로젝트  
+
+#### **AI EXPO KOREA 2026 - 랜딩 페이지** 🌐 [Live Demo](https://gwonbubjin.github.io/Hybrid/AI-EXPO-2026/)
+- **🎯 목적**: AI 전시회 홍보 및 사전등록을 위한 PWA 랜딩 페이지
+- **💻 기술 스택**:
+  - HTML5, CSS3, Vanilla JavaScript
+  - PWA (Service Worker, Web App Manifest)
+  - QRCode.js (QR 코드 생성)
+  - Pretendard 웹폰트
+  - GitHub Pages 배포
+- **✨ 주요 기능**:
+  - 오프라인 지원 및 홈 화면 설치
+  - PC/모바일 반응형 디자인 (좌우 분할 / 인트로 모드)
+  - QR 코드 기반 모바일 빠른 접속
+  - 실시간 카운트다운 타이머
+  - 배경 슬라이드쇼 및 다국어 지원
+
+---
+
+### 📅 251126 - CAPS LOCK 팀 프로젝트
+
+#### **ToeicMate - AI 기반 TOEIC 학습 플랫폼** 🌐 [Live Demo](https://limseonu.github.io/2025-Hybrid/1126/)
+- **🎯 목적**: 생성형 AI를 활용한 개인 맞춤형 TOEIC 학습 앱 (10,000명 이상 목표)
+- **💻 기술 스택**:
+  - React 18 + Vite
+  - Tailwind CSS (유틸리티 스타일링)
+  - Recharts (데이터 시각화)
+  - Lucide React (아이콘 라이브러리)
+  - 생성형 AI API (문제 생성, 채팅, 약점 분석)
+  - LocalStorage + Backend Sync
+- **✨ 주요 기능**:
+  - AI 튜터: 실시간 질문/답변 및 학습 가이드
+  - AI 문제 생성: 파트별 맞춤 문제 자동 생성
+  - 7개 파트 학습: TOEIC Part 1~7 전체 대응
+  - 약점 분석: AI 기반 학습 데이터 분석 및 개선 방향 제시
+  - 게이미피케이션: 레벨, 배지, 스트릭 시스템
+  - 모의고사 모드: 실전 2시간 타이머
+  - 단어장: 자동 단어 수집 및 복습
+- **🔧 개발 프로세스**:
+  - Flow (간트차트 기획)
+  - Figma (UI/UX 디자인)
+  - React + AI API 통합
 
 ## 📞 연락처
 
